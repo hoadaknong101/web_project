@@ -1,8 +1,38 @@
 package project_cuoi_ky.beans;
 
 public class Catagory {
+	private int id;
+	private String name;
 
 	public Catagory() {
-		// TODO Auto-generated constructor stub
+
 	}
+
+	public Catagory(int id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	@Override
+	public String toString() {
+		return "Catagory [id=" + id + ", name=" + name + "]";
+	}
+	
 }
