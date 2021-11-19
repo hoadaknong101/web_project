@@ -70,9 +70,63 @@ public class ProductDAO {
 		return tmp;
 	}
 	
+	public static ArrayList<Product> listProductByCategory(String category) throws SQLException {
+		int id = CategoryDAO.findCatagory(category).getId();
+		
+		String query = "select * from web_shopping.product where ProductCategory = " + id;
+		Statement st = (Statement) conn.createStatement();
+		ResultSet rs = st.executeQuery(query);
+		ArrayList<Product> tmp = new ArrayList<Product>();
+		while (rs.next()) {
+			Product p = new Product();
+			p.setId(rs.getInt(1));
+			p.setName(rs.getString(2));
+			p.setPrice(rs.getFloat(3));
+			p.setImagePath(rs.getNString(4));
+			p.setDescription(rs.getString(5));
+			p.setQuantity(rs.getInt(6));
+			p.setCategoryID(rs.getInt(7));
+			tmp.add(p);
+		}
+		return tmp;
+	}
+	public static ArrayList<Product> findProductByName(String name) throws SQLException {
+		String query = "select * from web_shopping.product where ProductName like '%" + name + "%'";
+		Statement st = (Statement) conn.createStatement();
+		ResultSet rs = st.executeQuery(query);
+		ArrayList<Product> tmp = new ArrayList<Product>();
+		while (rs.next()) {
+			Product p = new Product();
+			p.setId(rs.getInt(1));
+			p.setName(rs.getString(2));
+			p.setPrice(rs.getFloat(3));
+			p.setImagePath(rs.getNString(4));
+			p.setDescription(rs.getString(5));
+			p.setQuantity(rs.getInt(6));
+			p.setCategoryID(rs.getInt(7));
+			tmp.add(p);
+		}
+		return tmp;
+	}
+	
+	
+	
+	//Test function
 	public static void main(String[] args) throws SQLException {
 		
+//		insertProduct(new Product(1,
+//				"SP3",
+//				16000,
+//				"https://scontent.fdad3-5.fna.fbcdn.net/v/t39.30808-6/221494945_1843589535823925_1865731697281865863_n.jpg?_nc_cat=106&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=g2cNugrHR0sAX_BEUfY&tn=-FMDf5XyWS6i1t1w&_nc_ht=scontent.fdad3-5.fna&oh=0a61bd44b542906da013bd25fbfc7c20&oe=619CDA1F",
+//				"Decription for SP3",1,1));
+//		updateProduct(new Product(3,
+//				"SP3",
+//				17000,
+//				"https://scontent.fdad3-5.fna.fbcdn.net/v/t39.30808-6/221494945_1843589535823925_1865731697281865863_n.jpg?_nc_cat=106&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=g2cNugrHR0sAX_BEUfY&tn=-FMDf5XyWS6i1t1w&_nc_ht=scontent.fdad3-5.fna&oh=0a61bd44b542906da013bd25fbfc7c20&oe=619CDA1F",
+//				"Decription for SP3",1,1));
+//		deleteProduct(3);
 		ArrayList<Product> tmp = listProduct();
+//		ArrayList<Product> tmp = listProductByCategory("muc");
 		tmp.forEach((n) -> {
 			System.out.println(n.toString());
 		});
