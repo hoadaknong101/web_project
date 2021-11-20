@@ -375,7 +375,7 @@ table.table .avatar {
 				</table>
 				<div class="clearfix">
 					<div class="hint-text">
-						Showing <b>${listProduct.size()}</b> entries
+						Showing <b>${listProduct.size()}</b> products
 					</div>
 				</div>
 			</div>
