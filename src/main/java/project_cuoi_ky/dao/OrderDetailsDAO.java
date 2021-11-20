@@ -63,21 +63,29 @@ public class OrderDetailsDAO {
 		return tmp;
 	}
 	
-	public static ArrayList<OrderDetail> listByID(String id) throws SQLException{
+	public static ArrayList<OrderDetail> listByID(String id) {
 		String query = "select * from web_shopping.order_details where OrderID = '" + id +"'";
-		Statement st = (Statement) conn.createStatement();
-		ResultSet rs = st.executeQuery(query);
-		ArrayList<OrderDetail> tmp = new ArrayList<OrderDetail>();
-		while (rs.next()) {
-			OrderDetail c = new OrderDetail();
-			c.setId(rs.getInt(1));
-			c.setName(rs.getString(2));
-			c.setQuantity(rs.getInt(3));
-			c.setPrice(rs.getFloat(4));
-			c.setProductID(rs.getInt(5));
-			c.setOrderID(rs.getString(6));
-			tmp.add(c);
+		Statement st;
+		ArrayList<OrderDetail> tmp = null;
+		try {
+			st = (Statement) conn.createStatement();
+			ResultSet rs = st.executeQuery(query);
+			tmp = new ArrayList<OrderDetail>();
+			while (rs.next()) {
+				OrderDetail c = new OrderDetail();
+				c.setId(rs.getInt(1));
+				c.setName(rs.getString(2));
+				c.setQuantity(rs.getInt(3));
+				c.setPrice(rs.getFloat(4));
+				c.setProductID(rs.getInt(5));
+				c.setOrderID(rs.getString(6));
+				tmp.add(c);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+		
 		return tmp;
 	}
 	

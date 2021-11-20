@@ -41,19 +41,27 @@ public class OrderDAO {
 		ps.executeUpdate();
 	}
 	
-	public static ArrayList<Order> listOrder() throws SQLException {
+	public static ArrayList<Order> listOrder(){
 		String query = "select * from web_shopping.order";
-		Statement st = (Statement) conn.createStatement();
-		ResultSet rs = st.executeQuery(query);
-		ArrayList<Order> tmp = new ArrayList<Order>();
-		while (rs.next()) {
-			Order c = new Order();
-			c.setId(rs.getString(1));
-			c.setDate(rs.getDate(2));
-			c.setTotalPrice(rs.getFloat(3));
-			c.setCustomerID(rs.getInt(4));
-			tmp.add(c);
+		Statement st;
+		ArrayList<Order> tmp = null;
+		try {
+			st = (Statement) conn.createStatement();
+			ResultSet rs = st.executeQuery(query);
+			tmp = new ArrayList<Order>();
+			while (rs.next()) {
+				Order c = new Order();
+				c.setId(rs.getString(1));
+				c.setDate(rs.getDate(2));
+				c.setTotalPrice(rs.getFloat(3));
+				c.setCustomerID(rs.getInt(4));
+				tmp.add(c);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+		
 		return tmp;
 	}
 

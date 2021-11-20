@@ -7,7 +7,7 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Manage Customer</title>
+<title>Edit Customer</title>
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
 <link rel="stylesheet"
@@ -291,134 +291,51 @@ table.table .avatar {
 	font-weight: normal;
 }
 </style>
-<script>
-	function testConfirmDialog(id) {
-		var result = confirm("Are you sure?");
-		if (result) {
-			window.location.href = "deletecustomer?cid=" + id;
-		} else {
-			return false;
-		}
-	}
-	$(document).ready(function() {
-		// Activate tooltip
-		$('[data-toggle="tooltip"]').tooltip();
-
-		// Select/Deselect checkboxes
-		var checkbox = $('table tbody input[type="checkbox"]');
-		$("#selectAll").click(function() {
-			if (this.checked) {
-				checkbox.each(function() {
-					this.checked = true;
-				});
-			} else {
-				checkbox.each(function() {
-					this.checked = false;
-				});
-			}
-		});
-		checkbox.click(function() {
-			if (!this.checked) {
-				$("#selectAll").prop("checked", false);
-			}
-		});
-	});
-</script>
 </head>
 <body>
-	<div class="container-xl">
-		<div class="table-responsive">
-			<div class="table-wrapper">
-				<div class="table-title">
-					<div class="row">
-						<div class="col-sm-6">
-							<h2>
-								Manage <b>Customer</b>
-							</h2>
+	<c:if test="${not empty c}">
+		<div id="editProduct">
+			<div>
+				<div>
+					<form action="${pageContext.request.contextPath}/editcustomer"
+						method="post">
+						<div class="modal-header">
+							<h4 class="modal-title">Edit Customer</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-hidden="true">&times;</button>
 						</div>
-						<div class="col-sm-6">
-							<a href="#addProduct" class="btn btn-success" data-toggle="modal"><i
-								class="material-icons">&#xE147;</i> <span>Add New Customer</span></a>
+						<div class="modal-body">
+							<div class="form-group">
+								<label>Customer ID</label> <input name="id" type="text"
+									class="form-control" value="${c.getId()}" readonly required>
+							</div>
+							<div class="form-group">
+								<label>Customer name</label> <input value="${c.getName() }"
+									type="text" name="name" class="form-control" required>
+							</div>
+							<div class="form-group">
+								<label>Email</label> <input type="email"
+									value="${c.getEmail()}" name="email" class="form-control"
+									required />
+							</div>
+							<div class="form-group">
+								<label>Phone number</label> <input value="${c.getPhoneNumber()}"
+									name="phoneNumber" type="tel" class="form-control" required />
+							</div>
+							<div class="form-group">
+								<label>Password</label> <input value="${c.getPassword()}"
+									name="password" type="password" class="form-control" required />
+							</div>
 						</div>
-					</div>
-				</div>
-				<table class="table table-striped table-hover">
-					<thead>
-						<tr>
-							<th>ID</th>
-							<th>Customer name</th>
-							<th>Customer email</th>
-							<th>Phone number</th>
-							<th>Password</th>
-							<th>Actions</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach var="c" items="${listCustomer}">
-							<tr>
-								<td>${c.getId()}</td>
-								<td>${c.getName()}</td>
-								<td>${c.getEmail()}</td>
-								<td>${c.getPhoneNumber()}</td>
-								<td>${c.getPassword()}</td>
-								<td><a href="editcustomer?cid=${c.getId()}"><i
-										class="material-icons" title="Edit">&#xE254;</i></a> <a
-									onclick="testConfirmDialog(${c.getId()});"
-									href="deletecustomer?cid=${c.getId()}" class="delete"
-									data-toggle="modal"><i class="material-icons"
-										data-toggle="tooltip" title="Delete">&#xE872;</i></a></td>
-							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
-				<div class="clearfix">
-					<div class="hint-text">
-						Showing <b>${listCustomer.size()}</b> customers
-					</div>
+						<div class="modal-footer">
+							<a href="${pageContext.request.contextPath}/managecustomer"><input
+								type="button" class="btn btn-default" value="Cancel"></a> <input
+								type="submit" class="btn btn-info" value="Save">
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>
-	</div>
-	<!-- Edit Modal HTML -->
-	<div id="addProduct" class="modal fade">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<form action="insertcustomer" method="post">
-					<div class="modal-header">
-						<h4 class="modal-title">Add Customer</h4>
-						<button type="button" class="close" data-dismiss="modal"
-							aria-hidden="true">&times;</button>
-					</div>
-					<div class="modal-body">
-						<div class="form-group">
-							<label>Customer ID</label> <input type="text"
-								class="form-control" name="id" required>
-						</div>
-						<div class="form-group">
-							<label>Customer name</label> <input name="name" type="text"
-								class="form-control" required>
-						</div>						
-						<div class="form-group">
-							<label>Email</label> <input name="email" type="email"
-								class="form-control" required>
-						</div>
-						<div class="form-group">
-							<label>Phone number</label> <input name="phoneNumber" type="tel"
-								class="form-control" required>
-						</div>
-						<div class="form-group">
-							<label>Password</label> <input type="password" name="password"
-								class="form-control" required>
-						</div>
-					</div>
-					<div class="modal-footer">
-						<input type="button" class="btn btn-default" data-dismiss="modal"
-							value="Cancel"> <input type="submit"
-							class="btn btn-success" value="Add">
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
+	</c:if>
 </body>
 </html>
