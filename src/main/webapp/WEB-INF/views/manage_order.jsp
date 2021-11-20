@@ -294,7 +294,34 @@ table.table .avatar {
 
 </head>
 <body>
-	<div class="container-xl">
+	<div class="container-fluid p-0">
+	<div class="row" id="body-row">
+		<div id="sidebar-container" class="sidebar-expanded d-none d-md-block" style="margin: 30px 5px 50px 30px;">
+				<div class="d-flex flex-column flex-shrink-0 p-3 text-white" style="width: 280px; background-color:#435e7c; border-radius: 3px">
+					<a href="#" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+						<span class="fs-4" style="font-size:24px; margin: 0 0 0 75px;">ADMIN</span>
+					</a>
+					<hr>
+					<ul class="nav nav-pills flex-column mb-auto">
+						<li class="nav-item">
+							<a href="${pageContext.request.contextPath}/manageproduct" class="nav-link text-white" aria-current="page">
+								Products
+							</a>
+						</li>
+						<li>
+							<a href="${pageContext.request.contextPath}/manageorder" class="nav-link text-white active">
+								Orders
+							</a>
+						</li>
+						<li>
+							<a href="${pageContext.request.contextPath}/managecustomer" class="nav-link text-white">
+								Customers
+							</a>
+						</li>
+					</ul>		
+				</div>
+			</div>
+	<div class="col">
 		<div class="table-responsive">
 			<div class="table-wrapper">
 				<div class="table-title">
@@ -338,6 +365,9 @@ table.table .avatar {
 				</div>
 			</div>
 		</div>
+	</div>
+	</div>
+		
 	</div>
 </body>
 </html>
