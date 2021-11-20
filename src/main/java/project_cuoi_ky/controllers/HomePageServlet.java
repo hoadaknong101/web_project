@@ -1,7 +1,6 @@
 package project_cuoi_ky.controllers;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -26,11 +25,7 @@ public class HomePageServlet extends HttpServlet {
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		ArrayList<Catagory> listCategory = new ArrayList<Catagory>();
-		try {
-			listCategory = CategoryDAO.listCategories();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		listCategory = CategoryDAO.listCategories();
 		
 		request.setAttribute("listCategory", listCategory);
 		request.getRequestDispatcher("WEB-INF/views/index.jsp").forward(request, response);
