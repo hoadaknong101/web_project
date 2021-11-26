@@ -16,15 +16,14 @@ public class CustomerDAO {
 	public static Connection conn = DBContext.getConnection();
 
 	public static void insertCustomer(Customer c) {
-		String query = "insert into web_shopping.customer(CustomerID, CustomerName,CustomerEmail,CustomerPhoneNumber,CustomerPassword) Values(?,?,?,?,?)";
+		String query = "insert into web_shopping.customer(CustomerName,CustomerEmail,CustomerPhoneNumber,CustomerPassword) Values(?,?,?,?)";
 		PreparedStatement ps;
 		try {
 			ps = (PreparedStatement) conn.prepareStatement(query);
-			ps.setInt(1, c.getId());
-			ps.setString(2, c.getName());
-			ps.setString(3, c.getEmail());
-			ps.setString(4, c.getPhoneNumber());
-			ps.setString(5, c.getPassword());
+			ps.setString(1, c.getName());
+			ps.setString(2, c.getEmail());
+			ps.setString(3, c.getPhoneNumber());
+			ps.setString(4, c.getPassword());
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

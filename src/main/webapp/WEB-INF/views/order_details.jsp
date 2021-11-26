@@ -294,47 +294,76 @@ table.table .avatar {
 
 </head>
 <body>
-	<div class="container-xl">
-		<div class="table-responsive">
-			<div class="table-wrapper">
-				<div class="table-title">
-					<div class="row">
-						<div class="col-sm-6">
-							<h2>
-								Manage <b>Order Details</b>
-							</h2>
-						</div>
-						<div class="col-sm-6">
-						</div>
-					</div>
+	<div class="container-fluid p-0">
+		<div class="row" id="body-row">
+			<div id="sidebar-container"
+				class="sidebar-expanded d-none d-md-block"
+				style="margin: 30px 5px 50px 30px;">
+				<div class="d-flex flex-column flex-shrink-0 p-3 text-white"
+					style="width: 280px; background-color: #435e7c; border-radius: 3px">
+					<a href="#"
+						class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+						<span class="fs-4" style="font-size: 24px; margin: 0 0 0 75px;">ADMIN</span>
+					</a>
+					<hr>
+					<ul class="nav nav-pills flex-column mb-auto">
+						<li class="nav-item"><a href="${pageContext.request.contextPath}/manageproduct"
+							class="nav-link text-white active" aria-current="page">
+								Products </a></li>
+						<li><a href="${pageContext.request.contextPath}/manageorder"
+							class="nav-link text-white"> Orders </a></li>
+						<li><a
+							href="${pageContext.request.contextPath}/managecustomer"
+							class="nav-link text-white"> Customers </a></li>
+						<li><a
+							href="${pageContext.request.contextPath}/managecategory"
+							class="nav-link text-white"> Category </a></li>
+					</ul>
 				</div>
-				<table class="table table-striped table-hover">
-					<thead>
-						<tr>
-							<th>Order details ID</th>
-							<th>Product name</th>
-							<th>Quantity</th>
-							<th>Unit price</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach var="o" items="${listOrderDetails}">
-							<tr>
-								<td>${o.getOrderID()}</td>
-								<td>${o.getName()}</td>
-								<td>${o.getQuantity()}</td>
-								<td>${o.getPrice()}</td>							
-							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
-				<div class="clearfix">
-					<div class="hint-text">
-						Showing <b>${listOrderDetails.size()}</b> products purchased
+			</div>
+			<div class="col">
+				<div class="table-responsive">
+					<div class="table-wrapper">
+						<div class="table-title">
+							<div class="row">
+								<div class="col-sm-6">
+									<h2>
+										Manage <b>Order Details</b>
+									</h2>
+								</div>
+								<div class="col-sm-6"></div>
+							</div>
+						</div>
+						<table class="table table-striped table-hover">
+							<thead>
+								<tr>
+									<th>Order details ID</th>
+									<th>Product name</th>
+									<th>Quantity</th>
+									<th>Unit price</th>
+								</tr>
+							</thead>
+							<tbody>
+								<c:forEach var="o" items="${listOrderDetails}">
+									<tr>
+										<td>${o.getOrderID()}</td>
+										<td>${o.getName()}</td>
+										<td>${o.getQuantity()}</td>
+										<td>${o.getPrice()}</td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+						<div class="clearfix">
+							<div class="hint-text">
+								Showing <b>${listOrderDetails.size()}</b> products purchased
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+
 	</div>
 </body>
 </html>

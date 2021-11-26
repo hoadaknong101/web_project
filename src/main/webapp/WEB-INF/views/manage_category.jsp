@@ -326,52 +326,85 @@ table.table .avatar {
 </script>
 </head>
 <body>
-	<div class="container-xl">
-		<div class="table-responsive">
-			<div class="table-wrapper">
-				<div class="table-title">
-					<div class="row">
-						<div class="col-sm-6">
-							<h2>
-								Manage <b>Category</b>
-							</h2>
-						</div>
-						<div class="col-sm-6">
-							<a href="#addCategory" class="btn btn-success" data-toggle="modal"><i
-								class="material-icons">&#xE147;</i> <span>Add Category</span></a>
-						</div>
-					</div>
-				</div>
-				<table class="table table-striped table-hover">
-					<thead>
-						<tr>
-							<th>Category ID</th>
-							<th>Category name</th>
-							<th>Actions</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach var="c" items="${listCategory}">
-							<tr>
-								<td>${c.getId()}</td>
-								<td>${c.getName()}</td>
-								<td><a href="editcategory?cid=${c.getId()}"><i
-										class="material-icons" title="Edit">&#xE254;</i></a> <a
-									onclick="testConfirmDialog(${c.getId()});"
-									href="deletecategory?cid=${c.getId()}" class="delete"
-									data-toggle="modal"><i class="material-icons"
-										data-toggle="tooltip" title="Delete">&#xE872;</i></a></td>
-							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
-				<div class="clearfix">
-					<div class="hint-text">
-						Showing <b>${listCategory.size()}</b> categories
-					</div>
+	<div class="container-fluid p-0">
+		<div class="row" id="body-row">
+			<div id="sidebar-container"
+				class="sidebar-expanded d-none d-md-block"
+				style="margin: 30px 5px 50px 30px;">
+				<div class="d-flex flex-column flex-shrink-0 p-3 text-white"
+					style="width: 280px; background-color: #435e7c; border-radius: 3px">
+					<a href="#"
+						class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+						<span class="fs-4" style="font-size: 24px; margin: 0 0 0 75px;">ADMIN</span>
+					</a>
+					<hr>
+					<ul class="nav nav-pills flex-column mb-auto">
+						<li class="nav-item"><a
+							href="${pageContext.request.contextPath}/manageproduct"
+							class="nav-link text-white" aria-current="page"> Products </a></li>
+						<li><a href="${pageContext.request.contextPath}/manageorder"
+							class="nav-link text-white"> Orders </a></li>
+						<li><a
+							href="${pageContext.request.contextPath}/managecustomer"
+							class="nav-link text-white"> Customers </a></li>
+						<li><a
+							href="#"
+							class="nav-link text-white active"> Category </a></li>
+					</ul>
 				</div>
 			</div>
+			<div class="col">
+
+				<div class="table-responsive">
+					<div class="table-wrapper">
+						<div class="table-title">
+							<div class="row">
+								<div class="col-sm-6">
+									<h2>
+										Manage <b>Category</b>
+									</h2>
+								</div>
+								<div class="col-sm-6">
+									<a href="#addCategory" class="btn btn-success"
+										data-toggle="modal"><i class="material-icons">&#xE147;</i>
+										<span>Add Category</span></a>
+								</div>
+							</div>
+						</div>
+						<table class="table table-striped table-hover">
+							<thead>
+								<tr>
+									<th>Category ID</th>
+									<th>Category name</th>
+									<th>Actions</th>
+								</tr>
+							</thead>
+							<tbody>
+								<c:forEach var="c" items="${listCategory}">
+									<tr>
+										<td>${c.getId()}</td>
+										<td>${c.getName()}</td>
+										<td><a href="editcategory?cid=${c.getId()}"><i
+												class="material-icons" title="Edit">&#xE254;</i></a> <a
+											onclick="testConfirmDialog(${c.getId()});"
+											href="deletecategory?cid=${c.getId()}" class="delete"
+											data-toggle="modal"><i class="material-icons"
+												data-toggle="tooltip" title="Delete">&#xE872;</i></a></td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+						<div class="clearfix">
+							<div class="hint-text">
+								Showing <b>${listCategory.size()}</b> categories
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
 		</div>
+
 	</div>
 	<!-- Edit Modal HTML -->
 	<div id="addCategory" class="modal fade">

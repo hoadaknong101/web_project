@@ -309,13 +309,18 @@ table.table .avatar {
 							</a>
 						</li>
 						<li>
-							<a href="${pageContext.request.contextPath}/manageorder" class="nav-link text-white active">
+							<a href="#" class="nav-link text-white active">
 								Orders
 							</a>
 						</li>
 						<li>
 							<a href="${pageContext.request.contextPath}/managecustomer" class="nav-link text-white">
 								Customers
+							</a>
+						</li>
+						<li>
+							<a href="${pageContext.request.contextPath}/managecategory" class="nav-link text-white">
+								Category
 							</a>
 						</li>
 					</ul>		
