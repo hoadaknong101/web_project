@@ -38,7 +38,7 @@ public class EditProduct extends HttpServlet {
 		Product p = ProductDAO.findProductByID(id);
 		request.setAttribute("p", p);
 
-		request.getRequestDispatcher("WEB-INF/views/edit_product.jsp").forward(request, response);
+		request.getRequestDispatcher("templates/edit_product.jsp").forward(request, response);
 	}
 
 	/**

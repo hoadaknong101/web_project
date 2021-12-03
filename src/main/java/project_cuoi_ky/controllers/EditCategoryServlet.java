@@ -34,7 +34,7 @@ public class EditCategoryServlet extends HttpServlet {
 		Catagory category = CategoryDAO.findCatagory(id);
 		request.setAttribute("c", category);
 		
-		request.getRequestDispatcher("WEB-INF/views/edit_category.jsp").forward(request, response);
+		request.getRequestDispatcher("templates/edit_category.jsp").forward(request, response);
 	}
 
 	/**

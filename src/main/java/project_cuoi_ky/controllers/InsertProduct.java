@@ -42,7 +42,7 @@ public class InsertProduct extends HttpServlet {
 		Product product = new Product(1, name, price, imagePath, description, quantity, categoryID);
 		ProductDAO.insertProduct(product);
 
-		response.sendRedirect("manageproduct");
+		response.sendRedirect(request.getContextPath() +"/manageproduct");
 	}
 
 	/**

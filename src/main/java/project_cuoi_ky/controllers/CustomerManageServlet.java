@@ -37,7 +37,7 @@ public class CustomerManageServlet extends HttpServlet {
 		
 		request.setAttribute("listCustomer", listCustomer);
 		
-		request.getRequestDispatcher("WEB-INF/views/manage_customer.jsp").forward(request, response);
+		request.getRequestDispatcher("templates/manage_customer.jsp").forward(request, response);
 	}
 
 	/**

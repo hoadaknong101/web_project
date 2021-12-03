@@ -35,7 +35,7 @@ public class ProductManageServlet extends HttpServlet {
 		ArrayList<Product> listProduct = ProductDAO.listProduct();
 		
 		request.setAttribute("listProduct",listProduct);
-		request.getRequestDispatcher("WEB-INF/views/manage_product.jsp").forward(request, response);
+		request.getRequestDispatcher("templates/manage_product.jsp").forward(request, response);
 	}
 
 	/**

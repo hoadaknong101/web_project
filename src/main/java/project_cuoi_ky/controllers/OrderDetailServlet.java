@@ -28,7 +28,7 @@ public class OrderDetailServlet extends HttpServlet {
 		
 		request.setAttribute("listOrderDetails", listOrderDetail);
 		
-		request.getRequestDispatcher("WEB-INF/views/order_details.jsp").forward(request, response);
+		request.getRequestDispatcher("templates/order_details.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

@@ -38,7 +38,7 @@ public class EditCustomerServlet extends HttpServlet {
 
 		request.setAttribute("c", customer);
 
-		request.getRequestDispatcher("WEB-INF/views/edit_customer.jsp").forward(request, response);
+		request.getRequestDispatcher("templates/edit_customer.jsp").forward(request, response);
 
 	}
 

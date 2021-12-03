@@ -36,7 +36,7 @@ public class OrderManageServlet extends HttpServlet {
 		
 		request.setAttribute("listOrder", listOrder);
 		
-		request.getRequestDispatcher("WEB-INF/views/manage_order.jsp").forward(request, response);
+		request.getRequestDispatcher("templates/manage_order.jsp").forward(request, response);
 	}
 
 	/**

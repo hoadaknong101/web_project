@@ -426,10 +426,6 @@ table.table .avatar {
 					</div>
 					<div class="modal-body">
 						<div class="form-group">
-							<label>Customer ID</label> <input type="text"
-								class="form-control" name="id" required>
-						</div>
-						<div class="form-group">
 							<label>Customer name</label> <input name="name" type="text"
 								class="form-control" required>
 						</div>						

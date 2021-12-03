@@ -28,7 +28,7 @@ public class HomePageServlet extends HttpServlet {
 		listCategory = CategoryDAO.listCategories();
 		
 		request.setAttribute("listCategory", listCategory);
-		request.getRequestDispatcher("WEB-INF/views/index.jsp").forward(request, response);
+		request.getRequestDispatcher("templates/index.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

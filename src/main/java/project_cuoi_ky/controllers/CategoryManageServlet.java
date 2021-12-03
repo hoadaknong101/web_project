@@ -35,7 +35,7 @@ public class CategoryManageServlet extends HttpServlet {
 		
 		request.setAttribute("listCategory", listCategory);
 		
-		request.getRequestDispatcher("WEB-INF/views/manage_category.jsp").forward(request, response);
+		request.getRequestDispatcher("templates/manage_category.jsp").forward(request, response);
 	}
 
 	/**

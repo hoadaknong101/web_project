@@ -30,7 +30,7 @@ public class InsertCategoryServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		int id = Integer.parseInt(request.getParameter("id"));
+		int id = 1;
 		String name = request.getParameter("name");
 		
 		Catagory category = new Catagory(id, name);
