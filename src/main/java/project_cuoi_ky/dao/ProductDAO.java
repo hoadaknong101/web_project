@@ -14,7 +14,34 @@ import project_cuoi_ky.dbcontext.DBContext;
 
 public class ProductDAO {
 	public static Connection conn = DBContext.getConnection();
-
+	
+	public static ArrayList<Product> featuredProducts(){
+		String query = "select * from web_shopping.product";
+		Statement st;
+		ArrayList<Product> tmp = null;
+		try {
+			st = (Statement) conn.createStatement();
+			ResultSet rs = st.executeQuery(query);
+			tmp = new ArrayList<Product>();
+			while (rs.next()) {
+				Product p = new Product();
+				p.setId(rs.getInt(1));
+				p.setName(rs.getString(2));
+				p.setPrice(rs.getFloat(3));
+				p.setImagePath(rs.getNString(4));
+				p.setDescription(rs.getString(5));
+				p.setQuantity(rs.getInt(6));
+				p.setCategoryID(rs.getInt(7));
+				tmp.add(p);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return tmp;
+	}
+	
 	public static void insertProduct(Product p) {
 		String query = "insert into web_shopping.product(ProductName, ProductPrice,ProductImage,ProductDescription, ProductQuantity,ProductCategory) "
 				+ "Values(?,?,?,?,?,?)";

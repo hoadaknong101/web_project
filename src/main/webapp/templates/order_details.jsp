@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -309,15 +309,15 @@ table.table .avatar {
 					<ul class="nav nav-pills flex-column mb-auto">
 						<li class="nav-item"><a href="${pageContext.request.contextPath}/manageproduct"
 							class="nav-link text-white active" aria-current="page">
-								Products </a></li>
+								Sản phẩm </a></li>
 						<li><a href="${pageContext.request.contextPath}/manageorder"
-							class="nav-link text-white"> Orders </a></li>
+							class="nav-link text-white"> Đơn hàng </a></li>
 						<li><a
 							href="${pageContext.request.contextPath}/managecustomer"
-							class="nav-link text-white"> Customers </a></li>
+							class="nav-link text-white"> Khách hàng </a></li>
 						<li><a
 							href="${pageContext.request.contextPath}/managecategory"
-							class="nav-link text-white"> Category </a></li>
+							class="nav-link text-white"> Phân loại </a></li>
 					</ul>
 				</div>
 			</div>
@@ -328,7 +328,7 @@ table.table .avatar {
 							<div class="row">
 								<div class="col-sm-6">
 									<h2>
-										Manage <b>Order Details</b>
+										Quản lý <b>Chi tiết đơn hàng</b>
 									</h2>
 								</div>
 								<div class="col-sm-6"></div>
@@ -337,10 +337,10 @@ table.table .avatar {
 						<table class="table table-striped table-hover">
 							<thead>
 								<tr>
-									<th>Order details ID</th>
-									<th>Product name</th>
-									<th>Quantity</th>
-									<th>Unit price</th>
+									<th>Mã số</th>
+									<th>Tên sản phẩm</th>
+									<th>Số lượng</th>
+									<th>Đơn giá</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -356,7 +356,7 @@ table.table .avatar {
 						</table>
 						<div class="clearfix">
 							<div class="hint-text">
-								Showing <b>${listOrderDetails.size()}</b> products purchased
+								Hiện có <b>${listOrderDetails.size()}</b> sản phẩm đã bán
 							</div>
 						</div>
 					</div>

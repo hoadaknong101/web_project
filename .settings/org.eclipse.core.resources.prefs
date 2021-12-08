@@ -1,2 +1,7 @@
 eclipse.preferences.version=1
+encoding//src/main/webapp/templates/edit_category.jsp=UTF-8
+encoding//src/main/webapp/templates/edit_customer.jsp=UTF-8
+encoding//src/main/webapp/templates/footer_user.jsp=UTF-8
+encoding//src/main/webapp/templates/header_user.jsp=UTF-8
+encoding//src/main/webapp/templates/manage_category.jsp=UTF-8
 encoding//src/main/webapp/templates/manage_product.jsp=UTF-8

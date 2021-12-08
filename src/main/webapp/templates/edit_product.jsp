@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -7,7 +7,7 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Edit Product</title>
+<title>Cập nhật thông tin sản phẩm</title>
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
 <link rel="stylesheet"
@@ -300,41 +300,41 @@ table.table .avatar {
 					<form action="${pageContext.request.contextPath}/editproduct"
 						method="post">
 						<div class="modal-header">
-							<h4 class="modal-title">Edit Product</h4>
+							<h4 class="modal-title">Cập nhật thông tin sản phẩm</h4>
 							<button type="button" class="close" data-dismiss="modal"
 								aria-hidden="true">&times;</button>
 						</div>
 						<div class="modal-body">
 							<div class="form-group">
-								<label>Product name</label> <input name="name" type="text"
+								<label>Tên sản phẩm</label> <input name="name" type="text"
 									class="form-control" value="${p.getName()}" required>
 							</div>
 							<div class="form-group">
-								<label>Price</label> <input value="${p.getPrice() }"
+								<label>Giá</label> <input value="${p.getPrice() }"
 									type="number" name="price" class="form-control" required>
 							</div>
 							<div class="form-group">
-								<label>Image path</label>
+								<label>Địa chỉ hình ảnh</label>
 								<textarea class="form-control" name="imagePath" required>${p.getImagePath()}</textarea>
 							</div>
 							<div class="form-group">
-								<label>Description</label>
+								<label>Mô tả</label>
 								<textarea class="form-control" name="description" required>${p.getDescription()}</textarea>
 							</div>
 							<div class="form-group">
-								<label>Quantity</label> <input type="number"
+								<label>Số lượng</label> <input type="number"
 									value="${p.getQuantity()}" name="quantity" class="form-control"
 									required />
 							</div>
 							<div class="form-group">
-								<label>Category ID</label> <input value="${p.getCategoryID()}"
+								<label>Mã loại</label> <input value="${p.getCategoryID()}"
 									name="category" type="text" class="form-control" required />
 							</div>
 						</div>
 						<div class="modal-footer">
 							<a href="${pageContext.request.contextPath}/manageproduct"><input
-								type="button" class="btn btn-default" value="Cancel"></a> <input
-								type="submit" class="btn btn-info" value="Save">
+								type="button" class="btn btn-default" value="Hủy"></a> <input
+								type="submit" class="btn btn-info" value="Lưu">
 						</div>
 					</form>
 				</div>

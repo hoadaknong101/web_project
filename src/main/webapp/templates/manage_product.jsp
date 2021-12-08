@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -341,15 +341,15 @@ table.table .avatar {
 					<ul class="nav nav-pills flex-column mb-auto">
 						<li class="nav-item"><a href="#"
 							class="nav-link text-white active" aria-current="page">
-								Products </a></li>
+								Sản phẩm </a></li>
 						<li><a href="${pageContext.request.contextPath}/manageorder"
-							class="nav-link text-white"> Orders </a></li>
+							class="nav-link text-white"> Đơn hàng </a></li>
 						<li><a
 							href="${pageContext.request.contextPath}/managecustomer"
-							class="nav-link text-white"> Customers </a></li>
+							class="nav-link text-white"> Khách hàng </a></li>
 						<li><a
 							href="${pageContext.request.contextPath}/managecategory"
-							class="nav-link text-white"> Category </a></li>
+							class="nav-link text-white"> Phân loại </a></li>
 					</ul>
 				</div>
 			</div>
@@ -360,26 +360,26 @@ table.table .avatar {
 							<div class="row">
 								<div class="col-sm-6">
 									<h2>
-										Manage <b>Product</b>
+										Quản lý <b>Sản phẩm</b>
 									</h2>
 								</div>
 								<div class="col-sm-6">
 									<a href="#addProduct" class="btn btn-success"
 										data-toggle="modal"><i class="material-icons">&#xE147;</i>
-										<span>Add New Product</span></a>
+										<span>Thêm</span></a>
 								</div>
 							</div>
 						</div>
 						<table class="table table-striped table-hover">
 							<thead>
 								<tr>
-									<th>Product name</th>
-									<th>Price</th>
-									<th>Image path</th>
-									<th>Description</th>
-									<th>Quantity</th>
-									<th>Category</th>
-									<th>Actions</th>
+									<th>Tên sản phẩm</th>
+									<th>Giá</th>
+									<th>Hình ảnh</th>
+									<th>Mô tả</th>
+									<th>Số lượng</th>
+									<th>Loại</th>
+									<th>Hành động</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -387,7 +387,7 @@ table.table .avatar {
 									<tr>
 										<td>${p.getName()}</td>
 										<td>${p.getPrice()}</td>
-										<td>${p.getImagePath()}</td>
+										<td><img  src="${p.getImagePath()}" width="100" height="100"/></td>
 										<td>${p.getDescription()}</td>
 										<td>${p.getQuantity()}</td>
 										<td>${p.getCategoryID()}</td>
@@ -403,7 +403,7 @@ table.table .avatar {
 						</table>
 						<div class="clearfix">
 							<div class="hint-text">
-								Showing <b>${listProduct.size()}</b> products
+								Hiện có <b>${listProduct.size()}</b> sản phẩm
 							</div>
 						</div>
 					</div>
@@ -418,40 +418,40 @@ table.table .avatar {
 			<div class="modal-content">
 				<form action="insertproduct" method="post">
 					<div class="modal-header">
-						<h4 class="modal-title">Add Product</h4>
+						<h4 class="modal-title">Thêm sản phẩm</h4>
 						<button type="button" class="close" data-dismiss="modal"
 							aria-hidden="true">&times;</button>
 					</div>
 					<div class="modal-body">
 						<div class="form-group">
-							<label>Product name</label> <input type="text"
+							<label>Tên sản phẩm</label> <input type="text"
 								class="form-control" name="name" required>
 						</div>
 						<div class="form-group">
-							<label>Price</label> <input name="price" type="number"
+							<label>Giá</label> <input name="price" type="number"
 								class="form-control" required>
 						</div>
 						<div class="form-group">
-							<label>Image path</label>
+							<label>Địa chỉ hình ảnh</label>
 							<textarea class="form-control" name="imagePath" required></textarea>
 						</div>
 						<div class="form-group">
-							<label>Description</label>
+							<label>Mô tả</label>
 							<textarea class="form-control" name="description" required></textarea>
 						</div>
 						<div class="form-group">
-							<label>Quantity</label> <input name="quantity" type="number"
+							<label>Số lượng</label> <input name="quantity" type="number"
 								class="form-control" required>
 						</div>
 						<div class="form-group">
-							<label>Category</label> <input type="number" name="category"
+							<label>Loại sản phẩm</label> <input type="number" name="category"
 								class="form-control" required>
 						</div>
 					</div>
 					<div class="modal-footer">
 						<input type="button" class="btn btn-default" data-dismiss="modal"
-							value="Cancel"> <input type="submit"
-							class="btn btn-success" value="Add">
+							value="Hủy"> <input type="submit"
+							class="btn btn-success" value="Thêm">
 					</div>
 				</form>
 			</div>

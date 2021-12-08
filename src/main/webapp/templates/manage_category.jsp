@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -7,7 +7,7 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Manage Category</title>
+<title>Quản lý phân loại</title>
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
 <link rel="stylesheet"
@@ -341,15 +341,15 @@ table.table .avatar {
 					<ul class="nav nav-pills flex-column mb-auto">
 						<li class="nav-item"><a
 							href="${pageContext.request.contextPath}/manageproduct"
-							class="nav-link text-white" aria-current="page"> Products </a></li>
+							class="nav-link text-white" aria-current="page"> Sản phẩm </a></li>
 						<li><a href="${pageContext.request.contextPath}/manageorder"
-							class="nav-link text-white"> Orders </a></li>
+							class="nav-link text-white"> Đơn hàng </a></li>
 						<li><a
 							href="${pageContext.request.contextPath}/managecustomer"
-							class="nav-link text-white"> Customers </a></li>
+							class="nav-link text-white"> Khách hàng </a></li>
 						<li><a
 							href="#"
-							class="nav-link text-white active"> Category </a></li>
+							class="nav-link text-white active"> Phân loại </a></li>
 					</ul>
 				</div>
 			</div>
@@ -361,22 +361,22 @@ table.table .avatar {
 							<div class="row">
 								<div class="col-sm-6">
 									<h2>
-										Manage <b>Category</b>
+										Quản lý <b>Phân loại</b>
 									</h2>
 								</div>
 								<div class="col-sm-6">
 									<a href="#addCategory" class="btn btn-success"
 										data-toggle="modal"><i class="material-icons">&#xE147;</i>
-										<span>Add Category</span></a>
+										<span>Thêm</span></a>
 								</div>
 							</div>
 						</div>
 						<table class="table table-striped table-hover">
 							<thead>
 								<tr>
-									<th>Category ID</th>
-									<th>Category name</th>
-									<th>Actions</th>
+									<th>Mã loại</th>
+									<th>Tên loại</th>
+									<th>Hành động</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -396,7 +396,7 @@ table.table .avatar {
 						</table>
 						<div class="clearfix">
 							<div class="hint-text">
-								Showing <b>${listCategory.size()}</b> categories
+								Hiện tại có <b>${listCategory.size()}</b> loại.
 							</div>
 						</div>
 					</div>
@@ -412,20 +412,20 @@ table.table .avatar {
 			<div class="modal-content">
 				<form action="insertcategory" method="post">
 					<div class="modal-header">
-						<h4 class="modal-title">Add Category</h4>
+						<h4 class="modal-title">Thêm</h4>
 						<button type="button" class="close" data-dismiss="modal"
 							aria-hidden="true">&times;</button>
 					</div>
 					<div class="modal-body">
 						<div class="form-group">
-							<label>Category name</label> <input name="name" type="text"
+							<label>Tên loại</label> <input name="name" type="text"
 								class="form-control" required>
 						</div>
 					</div>
 					<div class="modal-footer">
 						<input type="button" class="btn btn-default" data-dismiss="modal"
-							value="Cancel"> <input type="submit"
-							class="btn btn-success" value="Add">
+							value="Hủy"> <input type="submit"
+							class="btn btn-success" value="Thêm">
 					</div>
 				</form>
 			</div>

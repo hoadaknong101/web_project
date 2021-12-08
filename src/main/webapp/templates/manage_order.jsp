@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -305,22 +305,22 @@ table.table .avatar {
 					<ul class="nav nav-pills flex-column mb-auto">
 						<li class="nav-item">
 							<a href="${pageContext.request.contextPath}/manageproduct" class="nav-link text-white" aria-current="page">
-								Products
+								Sản phẩm
 							</a>
 						</li>
 						<li>
 							<a href="#" class="nav-link text-white active">
-								Orders
+								Đơn hàng
 							</a>
 						</li>
 						<li>
 							<a href="${pageContext.request.contextPath}/managecustomer" class="nav-link text-white">
-								Customers
+								Khách hàng
 							</a>
 						</li>
 						<li>
 							<a href="${pageContext.request.contextPath}/managecategory" class="nav-link text-white">
-								Category
+								Phân loại
 							</a>
 						</li>
 					</ul>		
@@ -333,7 +333,7 @@ table.table .avatar {
 					<div class="row">
 						<div class="col-sm-6">
 							<h2>
-								Manage <b>Order</b>
+								Quản lý <b>Đơn hàng</b>
 							</h2>
 						</div>
 						<div class="col-sm-6">
@@ -343,11 +343,11 @@ table.table .avatar {
 				<table class="table table-striped table-hover">
 					<thead>
 						<tr>
-							<th>Order ID</th>
-							<th>Order date</th>
-							<th>Total price</th>
-							<th>Customer ID</th>
-							<th>Actions</th>
+							<th>Mã đơn hàng</th>
+							<th>Ngày đặt</th>
+							<th>Tổng tiền</th>
+							<th>Mã khách hàng</th>
+							<th>Hàng động</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -365,7 +365,7 @@ table.table .avatar {
 				</table>
 				<div class="clearfix">
 					<div class="hint-text">
-						Showing <b>${listOrder.size()}</b> orders
+						Hiện có <b>${listOrder.size()}</b> đơn hàng.
 					</div>
 				</div>
 			</div>
