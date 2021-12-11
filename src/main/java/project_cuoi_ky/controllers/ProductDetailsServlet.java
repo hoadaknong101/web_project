@@ -10,40 +10,41 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import project_cuoi_ky.beans.Catagory;
+import project_cuoi_ky.beans.Product;
 import project_cuoi_ky.dao.CategoryDAO;
+import project_cuoi_ky.dao.ProductDAO;
 
 /**
- * Servlet implementation class CategoryManageServlet
+ * Servlet implementation class ProductDetailsServlet
  */
-@WebServlet("/managecategory")
-public class CategoryManageServlet extends HttpServlet {
+@WebServlet("/chitietsanpham")
+public class ProductDetailsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public CategoryManageServlet() {
+    private int id;
+   
+    public ProductDetailsServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
-		ArrayList<Catagory> listCategory = CategoryDAO.listCategories();
+		id = Integer.parseInt(request.getParameter("pid"));
+		Product product = ProductDAO.findProductByID(id);
 		
+		ArrayList<Product> relatedProducts = ProductDAO.relatedProducts(product);
+		
+		request.setAttribute("p", product);
+		request.setAttribute("relatedProducts", relatedProducts);
+		
+		ArrayList<Catagory> listCategory = new ArrayList<Catagory>();
+		listCategory = CategoryDAO.listCategories();
 		request.setAttribute("listCategory", listCategory);
 		
-		request.getRequestDispatcher("templates/manage_category.jsp").forward(request, response);
+		
+		request.getRequestDispatcher("templates/product_details.jsp").forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

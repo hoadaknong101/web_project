@@ -9,7 +9,7 @@
 <meta name="keywords" content="Ogani, unica, creative, html">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Văn phòng phẩm PTH</title>
+<title>Cửa hàng</title>
 
 <!-- Google Font -->
 <link
@@ -88,10 +88,9 @@
 				<div class="col-lg-6">
 					<nav class="header__menu">
 						<ul>
+							<li><a href="${pageContext.request.contextPath}/home">Home</a></li>
 							<li class="active"><a
-								href="${pageContext.request.contextPath}/home">Home</a></li>
-							<li><a href="${pageContext.request.contextPath}/shop">Sản
-									phẩm</a></li>
+								href="${pageContext.request.contextPath}/shop">Sản phẩm</a></li>
 							<li><a href="#">Trang</a>
 								<ul class="header__menu__dropdown">
 									<li><a href="${pageContext.request.contextPath}/shop">Sản
@@ -166,97 +165,94 @@
 			</div>
 		</div>
 	</section>
-	<!-- Hero Section End -->
-
-	<!-- Categories Section Begin -->
-	<section class="categories">
+	<!-- Breadcrumb Section Begin -->
+	<section class="breadcrumb-section set-bg"
+		data-setbg="<c:url value="templates/img/breadcrumb.jpg"/>">
 		<div class="container">
 			<div class="row">
-				<div class="categories__slider owl-carousel">
-					<c:forEach var="p" items="${listCategory}">
-						<div class="col-lg-3">
-							<div class="categories__item set-bg"
-								data-setbg="<c:url value="templates/img/categories/cat-1.jpg"/>">
-								<h5>
-									<a href="#">${p.getName()}</a>
-								</h5>
-							</div>
+				<div class="col-lg-12 text-center">
+					<div class="breadcrumb__text">
+						<h2>VĂN PHÒNG PHẨM</h2>
+						<div class="breadcrumb__option">
+							<a href="${pageContext.request.contextPath}/home">Trang chủ</a> <span>Cửa
+								hàng</span>
 						</div>
-					</c:forEach>
+					</div>
 				</div>
 			</div>
 		</div>
 	</section>
-	<!-- Categories Section End -->
+	<!-- Breadcrumb Section End -->
 
-	<!-- Featured Section Begin -->
-	<section class="featured spad">
+	<!-- Product Section Begin -->
+	<section class="product spad">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-12">
-					<div class="section-title">
-						<h2>Sản Phẩm Nổi Bật</h2>
+				<div class="col-lg-3 col-md-5">
+					<div class="sidebar">
+						<div class="sidebar__item">
+							<h4>Văn phòng phẩm</h4>
+							<ul>
+								<c:forEach var="p" items="${listCategory}">
+									<li><a href="#">${p.getName()}</a></li>
+								</c:forEach>
+							</ul>
+						</div>
 					</div>
-					<div class="featured__controls"></div>
 				</div>
-			</div>
-			<div class="row featured__filter">
-				<c:forEach var="p" items="${featuredProducts}">
-					<div class="col-lg-3 col-md-4 col-sm-6">
-						<div class="featured__item">
-							<div class="featured__item__pic set-bg"
-								data-setbg="${p.getImagePath()}">
-								<ul class="featured__item__pic__hover">
-									<li><a href="#"><i class="fa fa-heart"></i></a></li>
-									<li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-								</ul>
-							</div>
-							<div class="featured__item__text">
-								<h6>
-									<a href="chitietsanpham?pid=${p.getId()}">${p.getName()}</a>
-								</h6>
-								<h5>${p.getPrice()}</h5>
+				<div class="col-lg-9 col-md-7">
+					<div class="filter__item">
+						<div class="row">
+							<div class="col-lg-4 col-md-5">
+								<div class="filter__sort">
+									<span>Sắp xếp</span> <select>
+										<option value="0">Mặc định</option>
+									</select>
+								</div>
 							</div>
 						</div>
 					</div>
-				</c:forEach>
-			</div>
-		</div>
-	</section>
-	<!-- Featured Section End -->
+					<div class="row">
+						<c:forEach var="p" items="${listProducts}">
+							<div class="col-lg-4 col-md-6 col-sm-6">
+								<div class="product__item">
+									<div class="product__item__pic set-bg"
+										data-setbg="${p.getImagePath() }">
+										<ul class="product__item__pic__hover">
+											<li><a href="#"><i class="fa fa-heart"></i></a></li>
+											<li><a href="#"><i class="fa fa-retweet"></i></a></li>
+											<li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+										</ul>
+									</div>
+									<div class="product__item__text">
+										<h6>
+											<a href="chitietsanpham?pid=${p.getId()}">${p.getName() }</a>
+										</h6>
+										<h5>${p.getPrice()}VNĐ</h5>
+									</div>
+								</div>
+							</div>
+						</c:forEach>
 
-	<!-- Banner Begin -->
-	<div class="banner">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6 col-md-6 col-sm-6">
-					<div class="banner__pic">
-						<img src="<c:url value="templates/img/banner/banner-1.jpg"/>"
-							alt="" width="570" height="270" />
+						<div class="product__pagination">
+							<a href="#">1</a> <a href="#">2</a> <a href="#">3</a> <a href="#"><i
+								class="fa fa-long-arrow-right"></i></a>
+						</div>
 					</div>
-				</div>
-				<div class="col-lg-6 col-md-6 col-sm-6">
-					<div class="banner__pic">
-						<img src="<c:url value = "templates/img/banner/banner-2.jpg"/>"
-							alt="" width="570" height="270" />
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- Banner End -->
-	<section class="featured spad">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="section-title"></div>
 				</div>
 			</div>
 		</div>
 	</section>
+	<!-- Product Section End -->
+
+	<!-- Footer Section Begin -->
 	<jsp:include page="footer_user.jsp"></jsp:include>
+	<!-- Footer Section End -->
+
 	<!-- Js Plugins -->
-	<script src="<c:url value="templates/js/jquery-3.3.1.min.js"/>"></script>
+	<script src="<c:url value="templates/js/jquery-3.3.1.min.js"/>">
+		
+	</script>
 	<script src="<c:url value="templates/js/bootstrap.min.js"/>"></script>
 	<script src="<c:url value="templates/js/jquery.nice-select.min.js"/>"></script>
 	<script src="<c:url value="templates/js/jquery-ui.min.js"/>"></script>

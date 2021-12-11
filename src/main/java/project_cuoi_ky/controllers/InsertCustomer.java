@@ -16,7 +16,7 @@ import project_cuoi_ky.dao.CustomerDAO;
 @WebServlet("/insertcustomer")
 public class InsertCustomer extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+     // Tiếng việt  
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -29,12 +29,14 @@ public class InsertCustomer extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int id = Integer.parseInt(request.getParameter("id"));
+		response.setContentType("text/html;charset=UTF-8");
+		int id = 1;
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");
 		String phoneNumber = request.getParameter("phoneNumber");
 		String password = request.getParameter("password");		
-		Customer customer = new Customer(id,name,email,phoneNumber,password);		
+		Customer customer = new Customer(id,name,email,phoneNumber,password);
+		System.out.println(customer.toString());
 		CustomerDAO.insertCustomer(customer);		
 		response.sendRedirect(request.getContextPath() + "/managecustomer");
 	}

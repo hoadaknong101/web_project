@@ -31,7 +31,7 @@ public class InsertProduct extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		response.setContentType("text/html;charset=UTF-8");
 		String name = request.getParameter("name");
 		float price = Float.parseFloat(request.getParameter("price"));
 		String imagePath = request.getParameter("imagePath");

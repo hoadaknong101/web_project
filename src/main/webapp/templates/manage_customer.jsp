@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8"> 
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Manage Customer</title>
@@ -414,15 +414,12 @@ table.table .avatar {
 		</div>
 		
 	</div>
-	<!-- Edit Modal HTML -->
 	<div id="addProduct" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<form action="insertcustomer" method="post">
 					<div class="modal-header">
 						<h4 class="modal-title">Thêm khách hàng</h4>
-						<button type="button" class="close" data-dismiss="modal"
-							aria-hidden="true">&times;</button>
 					</div>
 					<div class="modal-body">
 						<div class="form-group">

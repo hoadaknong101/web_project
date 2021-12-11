@@ -3,13 +3,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="zxx">
+
 <head>
 <meta charset="UTF-8">
 <meta name="description" content="Ogani Template">
 <meta name="keywords" content="Ogani, unica, creative, html">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Văn phòng phẩm PTH</title>
+<title>${p.getName()}</title>
 
 <!-- Google Font -->
 <link
@@ -88,9 +89,9 @@
 				<div class="col-lg-6">
 					<nav class="header__menu">
 						<ul>
-							<li class="active"><a
+							<li ><a
 								href="${pageContext.request.contextPath}/home">Home</a></li>
-							<li><a href="${pageContext.request.contextPath}/shop">Sản
+							<li class="active"><a href="${pageContext.request.contextPath}/shop">Sản
 									phẩm</a></li>
 							<li><a href="#">Trang</a>
 								<ul class="header__menu__dropdown">
@@ -166,95 +167,129 @@
 			</div>
 		</div>
 	</section>
-	<!-- Hero Section End -->
-
-	<!-- Categories Section Begin -->
-	<section class="categories">
+	<section class="breadcrumb-section set-bg"
+		data-setbg="<c:url value="templates/img/breadcrumb.jpg"/>">
 		<div class="container">
 			<div class="row">
-				<div class="categories__slider owl-carousel">
-					<c:forEach var="p" items="${listCategory}">
-						<div class="col-lg-3">
-							<div class="categories__item set-bg"
-								data-setbg="<c:url value="templates/img/categories/cat-1.jpg"/>">
-								<h5>
-									<a href="#">${p.getName()}</a>
-								</h5>
-							</div>
+				<div class="col-lg-12 text-center">
+					<div class="breadcrumb__text">
+						<h2>${p.getName()}</h2>
+						<div class="breadcrumb__option">
+							<a href="${pageContext.request.contextPath}/home">Trang chủ</a> <a
+								href="${pageContext.request.contextPath}/home">Loại sản phẩm</a>
+							<span>${p.getName()}</span>
 						</div>
-					</c:forEach>
+					</div>
 				</div>
 			</div>
 		</div>
 	</section>
-	<!-- Categories Section End -->
 
-	<!-- Featured Section Begin -->
-	<section class="featured spad">
+	<!-- Product Details Section Begin -->
+	<section class="product-details spad">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 col-md-6">
+					<div class="product__details__pic">
+						<div class="product__details__pic__item">
+							<img class="product__details__pic__item--large"
+								src="${p.getImagePath()}" alt="">
+						</div>
+						<div class="product__details__pic__slider owl-carousel"></div>
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-6">
+					<div class="product__details__text">
+						<h3>${p.getName()}</h3>
+						<div class="product__details__price">${p.getPrice()}</div>
+						<p>${p.getDescription()}</p>
+						<div class="product__details__quantity">
+							<div class="quantity">
+								<div class="pro-qty">
+									<input type="text" value="1">
+								</div>
+							</div>
+						</div>
+						<a href="#" class="primary-btn">Thêm vào giỏ hàng</a> <a href="#"
+							class="heart-icon"><span class="icon_heart_alt"></span></a>
+						<ul>
+							<li><b>Chia sẻ : </b>
+								<div class="share">
+									<a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i
+										class="fa fa-twitter"></i></a> <a href="#"><i
+										class="fa fa-instagram"></i></a> <a href="#"><i
+										class="fa fa-pinterest"></i></a>
+								</div></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-12">
+					<div class="product__details__tab">
+						<ul class="nav nav-tabs" role="tablist">
+							<li class="nav-item"><a class="nav-link active"
+								data-toggle="tab" href="#tabs-1" role="tab" aria-selected="true">Mô
+									tả</a></li>
+						</ul>
+						<div class="tab-content">
+							<div class="tab-pane active" id="tabs-1" role="tabpanel">
+								<div class="product__details__tab__desc">
+									<h6>Thông Tin Chi Tiết</h6>
+									<p>Mã sản phẩm : 	${p.getId()}</p>
+									<p>Tên sản phẩm : 	${p.getName()}</p>
+									<p>Loại sản phẩm : 	Loại sản phẩm</p>
+									<p>Nhà cung cấp : 	Nhà cung cấp</p>
+									<p>${p.getDescription()}</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Product Details Section End -->
+
+	<!-- Related Product Section Begin -->
+	<section class="related-product">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
-					<div class="section-title">
-						<h2>Sản Phẩm Nổi Bật</h2>
+					<div class="section-title related__product__title">
+						<h2>Sản Phẩm Liên Quan</h2>
 					</div>
-					<div class="featured__controls"></div>
 				</div>
 			</div>
-			<div class="row featured__filter">
-				<c:forEach var="p" items="${featuredProducts}">
+			<div class="row">
+				<c:forEach var="r" items="${relatedProducts}">
 					<div class="col-lg-3 col-md-4 col-sm-6">
-						<div class="featured__item">
-							<div class="featured__item__pic set-bg"
-								data-setbg="${p.getImagePath()}">
-								<ul class="featured__item__pic__hover">
+						<div class="product__item">
+							<div class="product__item__pic set-bg"
+								data-setbg="${r.getImagePath()}">
+								<ul class="product__item__pic__hover">
 									<li><a href="#"><i class="fa fa-heart"></i></a></li>
+									<li><a href="#"><i class="fa fa-retweet"></i></a></li>
 									<li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
 								</ul>
 							</div>
-							<div class="featured__item__text">
+							<div class="product__item__text">
 								<h6>
-									<a href="chitietsanpham?pid=${p.getId()}">${p.getName()}</a>
+									<a href="chitietsanpham?pid=${r.getId()}">${r.getName()}</a>
 								</h6>
-								<h5>${p.getPrice()}</h5>
+								<h5>${r.getPrice()}VNĐ</h5>
 							</div>
 						</div>
 					</div>
 				</c:forEach>
-			</div>
-		</div>
-	</section>
-	<!-- Featured Section End -->
 
-	<!-- Banner Begin -->
-	<div class="banner">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6 col-md-6 col-sm-6">
-					<div class="banner__pic">
-						<img src="<c:url value="templates/img/banner/banner-1.jpg"/>"
-							alt="" width="570" height="270" />
-					</div>
-				</div>
-				<div class="col-lg-6 col-md-6 col-sm-6">
-					<div class="banner__pic">
-						<img src="<c:url value = "templates/img/banner/banner-2.jpg"/>"
-							alt="" width="570" height="270" />
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- Banner End -->
-	<section class="featured spad">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="section-title"></div>
-				</div>
 			</div>
 		</div>
 	</section>
+	<!-- Related Product Section End -->
+
+	<!-- Footer Section Begin -->
 	<jsp:include page="footer_user.jsp"></jsp:include>
+	<!-- Footer Section End -->
+
 	<!-- Js Plugins -->
 	<script src="<c:url value="templates/js/jquery-3.3.1.min.js"/>"></script>
 	<script src="<c:url value="templates/js/bootstrap.min.js"/>"></script>
@@ -264,7 +299,6 @@
 	<script src="<c:url value="templates/js/mixitup.min.js"/>"></script>
 	<script src="<c:url value="templates/js/owl.carousel.min.js"/>"></script>
 	<script src="<c:url value="templates/js/main.js"/>"></script>
-
 
 
 </body>

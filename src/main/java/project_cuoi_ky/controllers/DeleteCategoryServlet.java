@@ -28,6 +28,7 @@ public class DeleteCategoryServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html;charset=UTF-8");
 		int id = Integer.parseInt(request.getParameter("cid"));
 		
 		CategoryDAO.deleteCategory(id);

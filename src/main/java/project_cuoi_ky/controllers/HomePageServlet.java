@@ -14,7 +14,7 @@ import project_cuoi_ky.beans.Product;
 import project_cuoi_ky.dao.CategoryDAO;
 import project_cuoi_ky.dao.ProductDAO;
 
-@WebServlet(urlPatterns = {"/"})
+@WebServlet("/home")
 public class HomePageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

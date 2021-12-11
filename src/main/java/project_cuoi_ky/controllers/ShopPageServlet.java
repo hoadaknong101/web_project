@@ -9,27 +9,31 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import project_cuoi_ky.beans.OrderDetail;
-import project_cuoi_ky.dao.OrderDetailsDAO;
+import project_cuoi_ky.beans.Catagory;
+import project_cuoi_ky.beans.Product;
+import project_cuoi_ky.dao.CategoryDAO;
+import project_cuoi_ky.dao.ProductDAO;
 
-@WebServlet("/orderdetails")
-public class OrderDetailServlet extends HttpServlet {
+@WebServlet("/shop")
+public class ShopPageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public OrderDetailServlet() {
+	public ShopPageServlet() {
 		super();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
-		String id = request.getParameter("oid");
-		
-		ArrayList<OrderDetail> listOrderDetail = OrderDetailsDAO.listByID(id);
-		
-		request.setAttribute("listOrderDetails", listOrderDetail);
-		
-		request.getRequestDispatcher("templates/order_details.jsp").forward(request, response);
+		ArrayList<Catagory> listCategory = new ArrayList<Catagory>();
+		listCategory = CategoryDAO.listCategories();
+		request.setAttribute("listCategory", listCategory);
+
+		ArrayList<Product> listProducts = new ArrayList<Product>();
+		listProducts = ProductDAO.featuredProducts();
+		request.setAttribute("listProducts", listProducts);
+
+		request.getRequestDispatcher("templates/shop.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

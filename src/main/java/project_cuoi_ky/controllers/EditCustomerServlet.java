@@ -18,20 +18,13 @@ public class EditCustomerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	int id;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
 	public EditCustomerServlet() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		response.setContentType("text/html;charset=UTF-8");
 		id = Integer.parseInt(request.getParameter("cid"));
 
 		Customer customer = CustomerDAO.findCustomerByID(id);
@@ -42,10 +35,6 @@ public class EditCustomerServlet extends HttpServlet {
 
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String name = request.getParameter("name");

@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-
 import com.mysql.jdbc.Statement;
 
 import project_cuoi_ky.beans.Product;
@@ -14,9 +13,9 @@ import project_cuoi_ky.dbcontext.DBContext;
 
 public class ProductDAO {
 	public static Connection conn = DBContext.getConnection();
-	
-	public static ArrayList<Product> featuredProducts(){
-		String query = "select * from web_shopping.product";
+
+	public static ArrayList<Product> featuredProducts() {
+		String query = "select * from web_shopping.product limit 12";
 		Statement st;
 		ArrayList<Product> tmp = null;
 		try {
@@ -38,10 +37,10 @@ public class ProductDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return tmp;
 	}
-	
+
 	public static void insertProduct(Product p) {
 		String query = "insert into web_shopping.product(ProductName, ProductPrice,ProductImage,ProductDescription, ProductQuantity,ProductCategory) "
 				+ "Values(?,?,?,?,?,?)";
@@ -59,9 +58,9 @@ public class ProductDAO {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}		
+		}
 	}
-	
+
 	public static void updateProduct(Product p) {
 		String query = "update web_shopping.product set ProductName=?, ProductPrice=?,ProductImage=?,ProductDescription=?, ProductQuantity=?,ProductCategory=? "
 				+ "where ProductID = ?";
@@ -80,11 +79,10 @@ public class ProductDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
-	
-	
-	public static void deleteProduct(int id){
+
+	public static void deleteProduct(int id) {
 		String query = "delete from web_shopping.product where ProductID = ?";
 		PreparedStatement ps;
 		try {
@@ -94,9 +92,9 @@ public class ProductDAO {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}		
+		}
 	}
-	
+
 	public static Product findProductByID(int id) {
 		String query = "select * from web_shopping.product where ProductID = " + id;
 		Statement st;
@@ -118,11 +116,11 @@ public class ProductDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return null;
 	}
-	
-	public static ArrayList<Product> listProduct(){
+
+	public static ArrayList<Product> listProduct() {
 		String query = "select * from web_shopping.product";
 		Statement st;
 		ArrayList<Product> tmp = null;
@@ -145,13 +143,40 @@ public class ProductDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return tmp;
 	}
-	
+
+	public static ArrayList<Product> relatedProducts(Product p) {
+		
+		ArrayList<Product> tmp = new ArrayList<Product>();
+		try {
+			String query = "select * from web_shopping.product where ProductCategory = " + p.getCategoryID()
+					+ " and ProductID <> " + p.getId() + " limit 4";
+			Statement st = (Statement) conn.createStatement();
+			ResultSet rs = st.executeQuery(query);
+			tmp = new ArrayList<Product>();
+			while (rs.next()) {
+				Product pp = new Product();
+				pp.setId(rs.getInt(1));
+				pp.setName(rs.getString(2));
+				pp.setPrice(rs.getFloat(3));
+				pp.setImagePath(rs.getNString(4));
+				pp.setDescription(rs.getString(5));
+				pp.setQuantity(rs.getInt(6));
+				pp.setCategoryID(rs.getInt(7));
+				tmp.add(pp);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return tmp;
+	}
+
 	public static ArrayList<Product> listProductByCategory(String category) throws SQLException {
 		int id = CategoryDAO.findCatagory(category).getId();
-		
+
 		String query = "select * from web_shopping.product where ProductCategory = " + id;
 		Statement st = (Statement) conn.createStatement();
 		ResultSet rs = st.executeQuery(query);
@@ -169,6 +194,7 @@ public class ProductDAO {
 		}
 		return tmp;
 	}
+
 	public static ArrayList<Product> findProductByName(String name) throws SQLException {
 		String query = "select * from web_shopping.product where ProductName like '%" + name + "%'";
 		Statement st = (Statement) conn.createStatement();
@@ -187,12 +213,10 @@ public class ProductDAO {
 		}
 		return tmp;
 	}
-	
-	
-	
-	//Test function
+
+	// Test function
 	public static void main(String[] args) throws SQLException {
-		
+
 //		insertProduct(new Product(1,
 //				"SP3",
 //				16000,
@@ -210,5 +234,5 @@ public class ProductDAO {
 			System.out.println(n.toString());
 		});
 	}
-	
+
 }

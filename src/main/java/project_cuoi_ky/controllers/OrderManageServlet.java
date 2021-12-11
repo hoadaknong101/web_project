@@ -31,7 +31,7 @@ public class OrderManageServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		response.setContentType("text/html;charset=UTF-8");
 		ArrayList<Order> listOrder = OrderDAO.listOrder();
 		
 		request.setAttribute("listOrder", listOrder);
