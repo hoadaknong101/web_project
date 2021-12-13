@@ -340,8 +340,8 @@ table.table .avatar {
 					<hr>
 					<ul class="nav nav-pills flex-column mb-auto">
 						<li class="nav-item"><a href="#"
-							class="nav-link text-white active" aria-current="page">
-								Sản phẩm </a></li>
+							class="nav-link text-white active" aria-current="page"> Sản
+								phẩm </a></li>
 						<li><a href="${pageContext.request.contextPath}/manageorder"
 							class="nav-link text-white"> Đơn hàng </a></li>
 						<li><a
@@ -387,7 +387,8 @@ table.table .avatar {
 									<tr>
 										<td>${p.getName()}</td>
 										<td>${p.getPrice()}</td>
-										<td><img  src="${p.getImagePath()}" width="100" height="100"/></td>
+										<td><img src="${p.getImagePath()}" width="100"
+											height="100" /></td>
 										<td>${p.getDescription()}</td>
 										<td>${p.getQuantity()}</td>
 										<td>${p.getCategoryID()}</td>
@@ -444,14 +445,17 @@ table.table .avatar {
 								class="form-control" required>
 						</div>
 						<div class="form-group">
-							<label>Loại sản phẩm</label> <input type="number" name="category"
-								class="form-control" required>
+							<label>Loại sản phẩm</label> <select name="category" class="form-control">
+								<c:forEach var="c" items="${listCategory}">
+								<option value="${c.getId()}">${c.getName()}</option>
+								</c:forEach>
+							</select>
 						</div>
 					</div>
 					<div class="modal-footer">
 						<input type="button" class="btn btn-default" data-dismiss="modal"
-							value="Hủy"> <input type="submit"
-							class="btn btn-success" value="Thêm">
+							value="Hủy"> <input type="submit" class="btn btn-success"
+							value="Thêm">
 					</div>
 				</form>
 			</div>

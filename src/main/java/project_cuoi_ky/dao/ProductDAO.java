@@ -147,8 +147,62 @@ public class ProductDAO {
 		return tmp;
 	}
 
+	public static ArrayList<Product> listTop9Product() {
+		String query = "select * from web_shopping.product order by ProductID limit 9";
+		Statement st;
+		ArrayList<Product> tmp = null;
+		try {
+			st = (Statement) conn.createStatement();
+			ResultSet rs = st.executeQuery(query);
+			tmp = new ArrayList<Product>();
+			while (rs.next()) {
+				Product p = new Product();
+				p.setId(rs.getInt(1));
+				p.setName(rs.getString(2));
+				p.setPrice(rs.getFloat(3));
+				p.setImagePath(rs.getNString(4));
+				p.setDescription(rs.getString(5));
+				p.setQuantity(rs.getInt(6));
+				p.setCategoryID(rs.getInt(7));
+				tmp.add(p);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return tmp;
+	}
+
+	public static ArrayList<Product> listNext3Product(int amount) {
+		String query = "SELECT * FROM product ORDER BY ProductID LIMIT " + amount + ",3";
+		Statement st;
+		ArrayList<Product> tmp = null;
+		try {
+			st = (Statement) conn.createStatement();
+			ResultSet rs = st.executeQuery(query);
+			tmp = new ArrayList<Product>();
+			while (rs.next()) {
+				Product p = new Product();
+				p.setId(rs.getInt(1));
+				p.setName(rs.getString(2));
+				p.setPrice(rs.getFloat(3));
+				p.setImagePath(rs.getNString(4));
+				p.setDescription(rs.getString(5));
+				p.setQuantity(rs.getInt(6));
+				p.setCategoryID(rs.getInt(7));
+				tmp.add(p);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return tmp;
+	}
+
 	public static ArrayList<Product> relatedProducts(Product p) {
-		
+
 		ArrayList<Product> tmp = new ArrayList<Product>();
 		try {
 			String query = "select * from web_shopping.product where ProductCategory = " + p.getCategoryID()
@@ -192,6 +246,34 @@ public class ProductDAO {
 			p.setCategoryID(rs.getInt(7));
 			tmp.add(p);
 		}
+		return tmp;
+	}
+
+	public static ArrayList<Product> listProductByCategory(int cateId) {
+
+		String query = "select * from web_shopping.product where ProductCategory = " + cateId;
+		Statement st;
+		ArrayList<Product> tmp = null;
+		try {
+			st = (Statement) conn.createStatement();
+			ResultSet rs = st.executeQuery(query);
+			tmp = new ArrayList<Product>();
+			while (rs.next()) {
+				Product p = new Product();
+				p.setId(rs.getInt(1));
+				p.setName(rs.getString(2));
+				p.setPrice(rs.getFloat(3));
+				p.setImagePath(rs.getNString(4));
+				p.setDescription(rs.getString(5));
+				p.setQuantity(rs.getInt(6));
+				p.setCategoryID(rs.getInt(7));
+				tmp.add(p);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 		return tmp;
 	}
 

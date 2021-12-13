@@ -46,8 +46,18 @@
 					<div class="col-lg-6 col-md-6">
 						<div class="header__top__left">
 							<ul>
-								<li><i class="fa fa-envelope"></i>vpp@laptrinhweb.com</li>
-								<li>Miễn phí vận chuyển cho đơn hàng trên 200k</li>
+								<c:if
+									test="${sessionScope.user.getEmail() == 'hoadaknong101@gmail.com'}">
+									<li><i class="fa fa-envelope"></i>hoadaknong101@gmail.com</li>
+									<li><a
+										href="${pageContext.request.contextPath}/manageproduct">Quản
+											lý</a></li>
+								</c:if>
+								<c:if
+									test="${sessionScope.user.getEmail() != 'hoadaknong101@gmail.com'}">
+									<li><i class="fa fa-envelope"></i>vpp@laptrinhweb.com</li>
+									<li>Miễn phí vận chuyển cho đơn hàng trên 500k</li>
+								</c:if>
 							</ul>
 						</div>
 					</div>
@@ -71,7 +81,14 @@
 								</ul>
 							</div>
 							<div class="header__top__right__auth">
-								<a href="#"><i class="fa fa-user"></i> Đăng nhập</a>
+								<c:if test="${sessionScope.user != null }">
+									<a href="${pageContext.request.contextPath}/signout"><i
+										class="fa fa-user"></i> Đăng xuất</a>
+								</c:if>
+								<c:if test="${sessionScope.user == null }">
+									<a href="${pageContext.request.contextPath}/signin"><i
+										class="fa fa-user"></i> Đăng nhập</a>
+								</c:if>
 							</div>
 						</div>
 					</div>
@@ -126,7 +143,7 @@
 						</div>
 						<ul>
 							<c:forEach var="p" items="${listCategory}">
-								<li><a href="#">${p.getName()}</a></li>
+								<li><a href="category?cid=${p.getId() }">${p.getName()}</a></li>
 							</c:forEach>
 						</ul>
 					</div>
@@ -194,7 +211,7 @@
 							<h4>Văn phòng phẩm</h4>
 							<ul>
 								<c:forEach var="p" items="${listCategory}">
-									<li><a href="#">${p.getName()}</a></li>
+									<li><a href="category?cid=${p.getId() }">${p.getName()}</a></li>
 								</c:forEach>
 							</ul>
 						</div>
@@ -212,7 +229,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="row">
+					<div class="row" id="product">
 						<c:forEach var="p" items="${listProducts}">
 							<div class="col-lg-4 col-md-6 col-sm-6">
 								<div class="product__item">
@@ -233,11 +250,10 @@
 								</div>
 							</div>
 						</c:forEach>
-
-						<div class="product__pagination">
-							<a href="#">1</a> <a href="#">2</a> <a href="#">3</a> <a href="#"><i
-								class="fa fa-long-arrow-right"></i></a>
-						</div>
+					</div>
+					<div class="product__pagination">
+						<button class="primary-btn" onclick="loadMore()"
+							style="border: none;">Tải thêm</button>
 					</div>
 				</div>
 			</div>
@@ -248,11 +264,28 @@
 	<!-- Footer Section Begin -->
 	<jsp:include page="footer_user.jsp"></jsp:include>
 	<!-- Footer Section End -->
+	<script>
+		function loadMore() {
+			$.ajax({
+				url : "/project_cuoi_ky/loadmore",
+				type : "get",
+				success : function(data) {
+					var row = document.getElementById("product");
+					row.innerHTML += data;
+				},
+				error : function(xhr) {
 
+				}
+			});
+		}
+	</script>
 	<!-- Js Plugins -->
 	<script src="<c:url value="templates/js/jquery-3.3.1.min.js"/>">
 		
 	</script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 	<script src="<c:url value="templates/js/bootstrap.min.js"/>"></script>
 	<script src="<c:url value="templates/js/jquery.nice-select.min.js"/>"></script>
 	<script src="<c:url value="templates/js/jquery-ui.min.js"/>"></script>

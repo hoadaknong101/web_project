@@ -1,4 +1,5 @@
 package project_cuoi_ky.dao;
+
 //Tiếng Việt
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -132,17 +133,56 @@ public class CustomerDAO {
 		return tmp;
 	}
 
+	public static Customer checkLogin(String email, String password) {
+		String query = "select * from customer where CustomerEmail = '" + email + "' and CustomerPassword = '"
+				+ password + "'";
+		Statement st;
+		Customer customer = null;
+		try {
+			st = (Statement) conn.createStatement();
+			ResultSet rs = st.executeQuery(query);
+			while (rs.next()) {
+				customer = new Customer();
+				customer.setId(rs.getInt(1));
+				customer.setName(rs.getString(2));
+				customer.setEmail(rs.getString(3));
+				customer.setPhoneNumber(rs.getString(4));
+				customer.setPassword(rs.getString(5));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return customer;
+	}
+
+	public static int checkUserExist(Customer customer) {
+		String query = "select * from customer where CustomerEmail = '" + customer.getEmail() + "'";
+		Statement st;
+		try {
+			st = (Statement) conn.createStatement();
+			ResultSet rs = st.executeQuery(query);
+			while (rs.next()) {
+				return -1;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		query = "select * from customer where CustomerPhoneNumber = '" + customer.getPhoneNumber() + "'";
+		try {
+			st = (Statement) conn.createStatement();
+			ResultSet rs = st.executeQuery(query);
+			while (rs.next()) {
+				return 0;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return 1;
+	}
+
 	// Test function
 	public static void main(String[] args) throws SQLException {
-
-		// insertCustomer(new Customer(3, "Moi
-		// them","moithem@gmail.com","321321","32312)@"));
-		// updateCustomer(new Customer(3, "Moi sua lai cai moi
-		// them","moithem@gmail.com","321321","32312)@"));
-		// deleteCustomer(3);
-		ArrayList<Customer> tmp = listCustomers();
-		for (Customer x : tmp) {
-			System.out.println(x.toString());
-		}
+		System.out.println(checkLogin("hoadaknong101@gmail.com", "wqeqwe@3123").toString());
 	}
 }

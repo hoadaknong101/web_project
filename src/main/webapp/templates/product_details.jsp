@@ -47,8 +47,18 @@
 					<div class="col-lg-6 col-md-6">
 						<div class="header__top__left">
 							<ul>
-								<li><i class="fa fa-envelope"></i>vpp@laptrinhweb.com</li>
-								<li>Miễn phí vận chuyển cho đơn hàng trên 200k</li>
+								<c:if
+									test="${sessionScope.user.getEmail() == 'hoadaknong101@gmail.com'}">
+									<li><i class="fa fa-envelope"></i>hoadaknong101@gmail.com</li>
+									<li><a
+										href="${pageContext.request.contextPath}/manageproduct">Quản
+											lý</a></li>
+								</c:if>
+								<c:if
+									test="${sessionScope.user.getEmail() != 'hoadaknong101@gmail.com'}">
+									<li><i class="fa fa-envelope"></i>vpp@laptrinhweb.com</li>
+									<li>Miễn phí vận chuyển cho đơn hàng trên 500k</li>
+								</c:if>
 							</ul>
 						</div>
 					</div>
@@ -72,7 +82,14 @@
 								</ul>
 							</div>
 							<div class="header__top__right__auth">
-								<a href="#"><i class="fa fa-user"></i> Đăng nhập</a>
+								<c:if test="${sessionScope.user != null }">
+									<a href="${pageContext.request.contextPath}/signout"><i
+										class="fa fa-user"></i> Đăng xuất</a>
+								</c:if>
+								<c:if test="${sessionScope.user == null }">
+									<a href="${pageContext.request.contextPath}/signin"><i
+										class="fa fa-user"></i> Đăng nhập</a>
+								</c:if>
 							</div>
 						</div>
 					</div>
@@ -89,10 +106,9 @@
 				<div class="col-lg-6">
 					<nav class="header__menu">
 						<ul>
-							<li ><a
-								href="${pageContext.request.contextPath}/home">Home</a></li>
-							<li class="active"><a href="${pageContext.request.contextPath}/shop">Sản
-									phẩm</a></li>
+							<li><a href="${pageContext.request.contextPath}/home">Home</a></li>
+							<li class="active"><a
+								href="${pageContext.request.contextPath}/shop">Sản phẩm</a></li>
 							<li><a href="#">Trang</a>
 								<ul class="header__menu__dropdown">
 									<li><a href="${pageContext.request.contextPath}/shop">Sản
@@ -128,7 +144,7 @@
 						</div>
 						<ul>
 							<c:forEach var="p" items="${listCategory}">
-								<li><a href="#">${p.getName()}</a></li>
+								<li><a href="category?cid=${p.getId() }">${p.getName()}</a></li>
 							</c:forEach>
 						</ul>
 					</div>
@@ -234,10 +250,10 @@
 							<div class="tab-pane active" id="tabs-1" role="tabpanel">
 								<div class="product__details__tab__desc">
 									<h6>Thông Tin Chi Tiết</h6>
-									<p>Mã sản phẩm : 	${p.getId()}</p>
-									<p>Tên sản phẩm : 	${p.getName()}</p>
-									<p>Loại sản phẩm : 	Loại sản phẩm</p>
-									<p>Nhà cung cấp : 	Nhà cung cấp</p>
+									<p>Mã sản phẩm : ${p.getId()}</p>
+									<p>Tên sản phẩm : ${p.getName()}</p>
+									<p>Loại sản phẩm : Loại sản phẩm</p>
+									<p>Nhà cung cấp : Nhà cung cấp</p>
 									<p>${p.getDescription()}</p>
 								</div>
 							</div>

@@ -20,7 +20,6 @@ public class CategoryDAO {
 			st = (Statement) conn.createStatement();
 			st.executeUpdate(query);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -33,7 +32,6 @@ public class CategoryDAO {
 			st = (Statement) conn.createStatement();
 			st.executeUpdate(query);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -46,7 +44,6 @@ public class CategoryDAO {
 			st = (Statement) conn.createStatement();
 			st.executeUpdate(query);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -66,7 +63,6 @@ public class CategoryDAO {
 				tmp.add(c);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -86,21 +82,27 @@ public class CategoryDAO {
 				return tmp;
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		return null;
 	}
-	public static Catagory findCatagory(String name) throws SQLException{
+	public static Catagory findCatagory(String name){
 		String query = "select * from product_category where ProductCategoryName like '%" + name + "%'";
-		Statement st = (Statement) conn.createStatement();
-		ResultSet rs = st.executeQuery(query);
-		Catagory tmp = new Catagory();
-		while(rs.next()) {
-			tmp.setId(rs.getInt(1));
-			tmp.setName(rs.getString(2));
+		Statement st;
+		Catagory tmp = null;
+		try {
+			st = (Statement) conn.createStatement();
+			ResultSet rs = st.executeQuery(query);
+			tmp = new Catagory();
+			while(rs.next()) {
+				tmp.setId(rs.getInt(1));
+				tmp.setName(rs.getString(2));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
+		
 		return tmp;
 	}
 	

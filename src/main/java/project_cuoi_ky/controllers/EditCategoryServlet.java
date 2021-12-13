@@ -43,6 +43,7 @@ public class EditCategoryServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		request.setCharacterEncoding("UTF-8");
 		String name = request.getParameter("name");
 		
 		Catagory catagory = new Catagory(id,name);

@@ -310,8 +310,8 @@ table.table .avatar {
 									class="form-control" value="${p.getName()}" required>
 							</div>
 							<div class="form-group">
-								<label>Giá</label> <input value="${p.getPrice() }"
-									type="number" name="price" class="form-control" required>
+								<label>Giá</label> <input value="${p.getPrice() }" type="number"
+									name="price" class="form-control" required>
 							</div>
 							<div class="form-group">
 								<label>Địa chỉ hình ảnh</label>
@@ -327,8 +327,11 @@ table.table .avatar {
 									required />
 							</div>
 							<div class="form-group">
-								<label>Mã loại</label> <input value="${p.getCategoryID()}"
-									name="category" type="text" class="form-control" required />
+								<label>Loại sản phẩm</label> <select name="category" class="form-control">
+									<c:forEach var="c" items="${listCategory}">
+										<option value="${c.getId()}">${c.getName()}</option>
+									</c:forEach>
+								</select>
 							</div>
 						</div>
 						<div class="modal-footer">

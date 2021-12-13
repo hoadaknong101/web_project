@@ -30,7 +30,7 @@ public class ShopPageServlet extends HttpServlet {
 		request.setAttribute("listCategory", listCategory);
 
 		ArrayList<Product> listProducts = new ArrayList<Product>();
-		listProducts = ProductDAO.featuredProducts();
+		listProducts = ProductDAO.listTop9Product();
 		request.setAttribute("listProducts", listProducts);
 
 		request.getRequestDispatcher("templates/shop.jsp").forward(request, response);
