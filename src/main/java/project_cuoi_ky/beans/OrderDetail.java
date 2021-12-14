@@ -1,5 +1,7 @@
 package project_cuoi_ky.beans;
 
+import project_cuoi_ky.dao.ProductDAO;
+
 public class OrderDetail {
 	private int id;
 	private String name;
@@ -69,7 +71,9 @@ public class OrderDetail {
 	public void setOrderID(String orderID) {
 		OrderID = orderID;
 	}
-
+	public String getImagePath() {
+		return ProductDAO.findProductByID(this.productID).getImagePath();
+	}
 	@Override
 	public String toString() {
 		return "OrderDetail [id=" + id + ", name=" + name + ", quantity=" + quantity + ", price=" + price

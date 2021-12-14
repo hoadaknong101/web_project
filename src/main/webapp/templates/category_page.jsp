@@ -112,8 +112,9 @@
 								<ul class="header__menu__dropdown">
 									<li><a href="${pageContext.request.contextPath}/shop">Sản
 											phẩm</a></li>
-									<li><a href="./shoping-cart.html">Hóa đơn</a></li>
-									<li><a href="./checkout.html">Thanh toán</a></li>
+									<li><a
+										href="${pageContext.request.contextPath}/shoppingcart">Hóa
+											đơn</a></li>
 								</ul></li>
 							<li><a href="./contact.html">Liên hệ</a></li>
 						</ul>
@@ -122,8 +123,17 @@
 				<div class="col-lg-3">
 					<div class="header__cart">
 						<ul>
-							<li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-							<li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+							<li><a href="#"><i class="fa fa-heart"></i> <span>0</span></a></li>
+							<c:if test="${sessionScope.order != null}">
+								<li><a
+									href="${pageContext.request.contextPath}/shoppingcart"><i
+										class="fa fa-shopping-bag"></i> <span>${sessionScope.order.getAmount()}</span></a></li>
+							</c:if>
+							<c:if test="${sessionScope.order == null}">
+								<li><a
+									href="${pageContext.request.contextPath}/shoppingcart"><i
+										class="fa fa-shopping-bag"></i> <span>0</span></a></li>
+							</c:if>
 						</ul>
 					</div>
 				</div>
@@ -151,9 +161,9 @@
 				<div class="col-lg-9">
 					<div class="hero__search">
 						<div class="hero__search__form">
-							<form action="#">
+							<form action="search" method="POST">
 								<div class="hero__search__categories">Tất cả</div>
-								<input type="text" placeholder="Nhập tại đây...">
+								<input type="text" name="search" placeholder="Nhập tại đây...">
 								<button type="submit" class="site-btn">Tìm</button>
 							</form>
 						</div>
@@ -238,7 +248,8 @@
 										<ul class="product__item__pic__hover">
 											<li><a href="#"><i class="fa fa-heart"></i></a></li>
 											<li><a href="#"><i class="fa fa-retweet"></i></a></li>
-											<li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+											<li><a href="addtocart?pid=${p.getId()}"><i
+													class="fa fa-shopping-cart"></i></a></li>
 										</ul>
 									</div>
 									<div class="product__item__text">
@@ -250,11 +261,6 @@
 								</div>
 							</div>
 						</c:forEach>
-
-						<div class="product__pagination">
-							<a href="#">1</a> <a href="#">2</a> <a href="#">3</a> <a href="#"><i
-								class="fa fa-long-arrow-right"></i></a>
-						</div>
 					</div>
 				</div>
 			</div>

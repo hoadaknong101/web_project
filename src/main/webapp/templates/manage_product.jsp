@@ -35,7 +35,7 @@ body {
 
 .table-wrapper {
 	background: #fff;
-	padding: 20px 25px;
+	padding: 20px 26px 30px 25px;
 	border-radius: 3px;
 	min-width: 1000px;
 	box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
@@ -85,12 +85,12 @@ body {
 
 table.table tr th, table.table tr td {
 	border-color: #e9e9e9;
-	padding: 12px 15px;
+	padding: 18px 14px;
 	vertical-align: middle;
 }
 
 table.table tr th:first-child {
-	width: 60px;
+	width: 120px;
 }
 
 table.table tr th:last-child {
@@ -330,7 +330,7 @@ table.table .avatar {
 		<div class="row" id="body-row">
 			<div id="sidebar-container"
 				class="sidebar-expanded d-none d-md-block"
-				style="margin: 30px 5px 50px 30px;">
+				style="margin: 30px 0px 50px 20px;">
 				<div class="d-flex flex-column flex-shrink-0 p-3 text-white"
 					style="width: 280px; background-color: #435e7c; border-radius: 3px">
 					<a href="#"
@@ -376,9 +376,7 @@ table.table .avatar {
 									<th>Tên sản phẩm</th>
 									<th>Giá</th>
 									<th>Hình ảnh</th>
-									<th>Mô tả</th>
 									<th>Số lượng</th>
-									<th>Loại</th>
 									<th>Hành động</th>
 								</tr>
 							</thead>
@@ -389,9 +387,7 @@ table.table .avatar {
 										<td>${p.getPrice()}</td>
 										<td><img src="${p.getImagePath()}" width="100"
 											height="100" /></td>
-										<td>${p.getDescription()}</td>
 										<td>${p.getQuantity()}</td>
-										<td>${p.getCategoryID()}</td>
 										<td><a href="editproduct?pid=${p.getId()}"><i
 												class="material-icons" title="Edit">&#xE254;</i></a> <a
 											onclick="testConfirmDialog(${p.getId()});"
@@ -445,9 +441,10 @@ table.table .avatar {
 								class="form-control" required>
 						</div>
 						<div class="form-group">
-							<label>Loại sản phẩm</label> <select name="category" class="form-control">
+							<label>Loại sản phẩm</label> <select name="category"
+								class="form-control">
 								<c:forEach var="c" items="${listCategory}">
-								<option value="${c.getId()}">${c.getName()}</option>
+									<option value="${c.getId()}">${c.getName()}</option>
 								</c:forEach>
 							</select>
 						</div>

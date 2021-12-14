@@ -30,6 +30,7 @@ public class SignOutServlet extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		HttpSession session = request.getSession();
 		session.removeAttribute("user");
+		session.removeAttribute("order");
 		response.sendRedirect(request.getContextPath() + "/home");
 	}
 

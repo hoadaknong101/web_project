@@ -14,35 +14,53 @@ import project_cuoi_ky.dbcontext.DBContext;
 public class OrderDetailsDAO {
 	public static Connection conn = DBContext.getConnection();
 
-	public static void insertOrderDetails(OrderDetail o) throws SQLException {
+	public static void insertOrderDetails(OrderDetail o) {
 		String query = "insert into web_shopping.order_details(OrderProductName, OrderProductQuantity,OrderProductPrice,ProductID, OrderID) Values(?,?,?,?,?)";
-		PreparedStatement ps = (PreparedStatement) conn.prepareStatement(query);
-		ps.setString(1, o.getName());
-		ps.setInt(2, o.getQuantity());
-		ps.setFloat(3, o.getPrice());
-		ps.setInt(4, o.getProductID());
-		ps.setString(5, o.getOrderID());
-		ps.executeUpdate();
+		PreparedStatement ps;
+		try {
+			ps = (PreparedStatement) conn.prepareStatement(query);
+			ps.setString(1, o.getName());
+			ps.setInt(2, o.getQuantity());
+			ps.setFloat(3, o.getPrice());
+			ps.setInt(4, o.getProductID());
+			ps.setString(5, o.getOrderID());
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
 	}
 
-	public static void updateOrderDetails(OrderDetail o) throws SQLException {
+	public static void updateOrderDetails(OrderDetail o) {
 		String query = "update web_shopping.order_details set OrderProductName = ?, OrderProductQuantity= ?, OrderProductPrice=?, ProductID=?, OrderID=? "
 				+ "where OrderDetailsID = ?";
-		PreparedStatement ps = (PreparedStatement) conn.prepareStatement(query);
-		ps.setString(1, o.getName());
-		ps.setInt(2, o.getQuantity());
-		ps.setFloat(3, o.getPrice());
-		ps.setInt(4, o.getProductID());
-		ps.setString(5, o.getOrderID());
-		ps.setInt(6, o.getId());
-		ps.executeUpdate();
+		PreparedStatement ps;
+		try {
+			ps = (PreparedStatement) conn.prepareStatement(query);
+			ps.setString(1, o.getName());
+			ps.setInt(2, o.getQuantity());
+			ps.setFloat(3, o.getPrice());
+			ps.setInt(4, o.getProductID());
+			ps.setString(5, o.getOrderID());
+			ps.setInt(6, o.getId());
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
 	}
 
-	public static void deleteOrderDetails(int id) throws SQLException {
+	public static void deleteOrderDetails(int id) {
 		String query = "delete from web_shopping.order_details where OrderDetailsID = ?";
-		PreparedStatement ps = (PreparedStatement) conn.prepareStatement(query);
-		ps.setInt(1, id);
-		ps.executeUpdate();
+		PreparedStatement ps;
+		try {
+			ps = (PreparedStatement) conn.prepareStatement(query);
+			ps.setInt(1, id);
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
 	}
 
 	public static ArrayList<OrderDetail> listOrderDetails() throws SQLException {
@@ -62,9 +80,9 @@ public class OrderDetailsDAO {
 		}
 		return tmp;
 	}
-	
+
 	public static ArrayList<OrderDetail> listByID(String id) {
-		String query = "select * from web_shopping.order_details where OrderID = '" + id +"'";
+		String query = "select * from web_shopping.order_details where OrderID = '" + id + "'";
 		Statement st;
 		ArrayList<OrderDetail> tmp = null;
 		try {
@@ -85,14 +103,14 @@ public class OrderDetailsDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return tmp;
 	}
-	
+
 	public static void main(String[] args) throws SQLException {
 
-		//insertOrderDetails(new OrderDetail(1,"But may",5,30000,1,"1"));
-		
+		insertOrderDetails(new OrderDetail(1, "But may", 5, 30000, 1, "1"));
+
 		ArrayList<OrderDetail> tmp = new ArrayList<OrderDetail>();
 		tmp.forEach((n) -> {
 			System.out.println(n.toString());

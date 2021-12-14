@@ -46,11 +46,15 @@
 					<div class="col-lg-6 col-md-6">
 						<div class="header__top__left">
 							<ul>
-								<c:if test="${sessionScope.user.getEmail() == 'hoadaknong101@gmail.com'}" >
+								<c:if
+									test="${sessionScope.user.getEmail() == 'hoadaknong101@gmail.com'}">
 									<li><i class="fa fa-envelope"></i>hoadaknong101@gmail.com</li>
-									<li><a href="${pageContext.request.contextPath}/manageproduct">Quản lý</a></li>
+									<li><a
+										href="${pageContext.request.contextPath}/manageproduct">Quản
+											lý</a></li>
 								</c:if>
-								<c:if test="${sessionScope.user.getEmail() != 'hoadaknong101@gmail.com'}" >
+								<c:if
+									test="${sessionScope.user.getEmail() != 'hoadaknong101@gmail.com'}">
 									<li><i class="fa fa-envelope"></i>vpp@laptrinhweb.com</li>
 									<li>Miễn phí vận chuyển cho đơn hàng trên 500k</li>
 								</c:if>
@@ -109,8 +113,9 @@
 								<ul class="header__menu__dropdown">
 									<li><a href="${pageContext.request.contextPath}/shop">Sản
 											phẩm</a></li>
-									<li><a href="./shoping-cart.html">Hóa đơn</a></li>
-									<li><a href="./checkout.html">Thanh toán</a></li>
+									<li><a
+										href="${pageContext.request.contextPath}/shoppingcart">Hóa
+											đơn</a></li>
 								</ul></li>
 							<li><a href="./contact.html">Liên hệ</a></li>
 						</ul>
@@ -119,8 +124,17 @@
 				<div class="col-lg-3">
 					<div class="header__cart">
 						<ul>
-							<li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-							<li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+							<li><a href="#"><i class="fa fa-heart"></i> <span>0</span></a></li>
+							<c:if test="${sessionScope.order != null}">
+								<li><a
+									href="${pageContext.request.contextPath}/shoppingcart"><i
+										class="fa fa-shopping-bag"></i> <span>${sessionScope.order.getAmount()}</span></a></li>
+							</c:if>
+							<c:if test="${sessionScope.order == null}">
+								<li><a
+									href="${pageContext.request.contextPath}/shoppingcart"><i
+										class="fa fa-shopping-bag"></i> <span>0</span></a></li>
+							</c:if>
 						</ul>
 					</div>
 				</div>
@@ -148,9 +162,9 @@
 				<div class="col-lg-9">
 					<div class="hero__search">
 						<div class="hero__search__form">
-							<form action="#">
+							<form action="search" method="POST">
 								<div class="hero__search__categories">Tất cả</div>
-								<input type="text" placeholder="Nhập tại đây...">
+								<input type="text" name="search" placeholder="Nhập tại đây...">
 								<button type="submit" class="site-btn">Tìm</button>
 							</form>
 						</div>
@@ -221,7 +235,8 @@
 								data-setbg="${p.getImagePath()}">
 								<ul class="featured__item__pic__hover">
 									<li><a href="#"><i class="fa fa-heart"></i></a></li>
-									<li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+									<li><a href="addtocart?pid=${p.getId()}"><i
+											class="fa fa-shopping-cart"></i></a></li>
 								</ul>
 							</div>
 							<div class="featured__item__text">

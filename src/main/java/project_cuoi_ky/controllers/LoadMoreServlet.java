@@ -29,32 +29,33 @@ public class LoadMoreServlet extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		request.setCharacterEncoding("UTF-8");
-		ArrayList<Product> listNext3Products = ProductDAO.listNext3Product(3);
+		String amountString = (String)request.getParameter("exist");
+		int amount = Integer.parseInt(amountString);
+		ArrayList<Product> listNext3Products = ProductDAO.listNext3Product(amount);
 		PrintWriter out = response.getWriter();
-		for(Product p : listNext3Products) {
-			out.println("<div class=\"col-lg-4 col-md-6 col-sm-6\">\r\n"
+		for (Product p : listNext3Products) {
+			out.println("<div class=\"product col-lg-4 col-md-6 col-sm-6\">\r\n"
 					+ "								<div class=\"product__item\">\r\n"
 					+ "									<div class=\"product__item__pic set-bg\"\r\n"
-					+ "										data-setbg=\""+p.getImagePath()+"\">\r\n"
+					+ "										data-setbg=\"" + p.getImagePath() + "\">\r\n"
 					+ "										<ul class=\"product__item__pic__hover\">\r\n"
 					+ "											<li><a href=\"#\"><i class=\"fa fa-heart\"></i></a></li>\r\n"
 					+ "											<li><a href=\"#\"><i class=\"fa fa-retweet\"></i></a></li>\r\n"
 					+ "											<li><a href=\"#\"><i class=\"fa fa-shopping-cart\"></i></a></li>\r\n"
-					+ "										</ul>\r\n"
-					+ "									</div>\r\n"
+					+ "										</ul>\r\n" + "									</div>\r\n"
 					+ "									<div class=\"product__item__text\">\r\n"
 					+ "										<h6>\r\n"
-					+ "											<a href=\"chitietsanpham?pid="+p.getId()+"\">"+p.getName()+"</a>\r\n"
-					+ "										</h6>\r\n"
-					+ "										<h5>"+p.getPrice()+"VNĐ</h5>\r\n"
-					+ "									</div>\r\n"
-					+ "								</div>\r\n"
+					+ "											<a href=\"chitietsanpham?pid=" + p.getId() + "\">"
+					+ p.getName() + "</a>\r\n" + "										</h6>\r\n"
+					+ "										<h5>" + p.getPrice() + "VNĐ</h5>\r\n"
+					+ "									</div>\r\n" + "								</div>\r\n"
 					+ "							</div>");
 		}
 	}
@@ -65,8 +66,6 @@ public class LoadMoreServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
 	}
 
 }

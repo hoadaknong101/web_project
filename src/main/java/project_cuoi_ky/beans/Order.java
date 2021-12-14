@@ -1,15 +1,18 @@
 package project_cuoi_ky.beans;
 
 import java.sql.Date;
+import java.util.ArrayList;
+
+import project_cuoi_ky.dao.OrderDetailsDAO;
 
 public class Order {
 	private String id;
 	private Date date;
 	private float totalPrice;
 	private int customerID;
-	
+
 	public Order() {
-		
+
 	}
 
 	public Order(String id, Date date, float totalPrice, int customerID) {
@@ -52,9 +55,16 @@ public class Order {
 		this.customerID = customerID;
 	}
 
+	public int getAmount() {
+		int amount;
+		ArrayList<OrderDetail> tmp = OrderDetailsDAO.listByID(this.id);
+		amount = tmp.size();
+		return amount;
+	}
+
 	@Override
 	public String toString() {
 		return "Order [id=" + id + ", date=" + date + ", totalPrice=" + totalPrice + ", customerID=" + customerID + "]";
 	}
-	
+
 }

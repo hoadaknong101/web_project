@@ -112,8 +112,9 @@
 								<ul class="header__menu__dropdown">
 									<li><a href="${pageContext.request.contextPath}/shop">Sản
 											phẩm</a></li>
-									<li><a href="./shoping-cart.html">Hóa đơn</a></li>
-									<li><a href="./checkout.html">Thanh toán</a></li>
+									<li><a
+										href="${pageContext.request.contextPath}/shoppingcart">Giỏ
+											hàng</a></li>
 								</ul></li>
 							<li><a href="./contact.html">Liên hệ</a></li>
 						</ul>
@@ -122,8 +123,17 @@
 				<div class="col-lg-3">
 					<div class="header__cart">
 						<ul>
-							<li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-							<li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+							<li><a href="#"><i class="fa fa-heart"></i> <span>0</span></a></li>
+							<c:if test="${sessionScope.order != null}">
+								<li><a
+									href="${pageContext.request.contextPath}/shoppingcart"><i
+										class="fa fa-shopping-bag"></i> <span>${sessionScope.order.getAmount()}</span></a></li>
+							</c:if>
+							<c:if test="${sessionScope.order == null}">
+								<li><a
+									href="${pageContext.request.contextPath}/shoppingcart"><i
+										class="fa fa-shopping-bag"></i> <span>0</span></a></li>
+							</c:if>
 						</ul>
 					</div>
 				</div>
@@ -151,9 +161,9 @@
 				<div class="col-lg-9">
 					<div class="hero__search">
 						<div class="hero__search__form">
-							<form action="#">
+							<form action="search" method="POST">
 								<div class="hero__search__categories">Tất cả</div>
-								<input type="text" placeholder="Nhập tại đây...">
+								<input type="text" name="search" placeholder="Nhập tại đây...">
 								<button type="submit" class="site-btn">Tìm</button>
 							</form>
 						</div>
@@ -231,14 +241,15 @@
 					</div>
 					<div class="row" id="product">
 						<c:forEach var="p" items="${listProducts}">
-							<div class="col-lg-4 col-md-6 col-sm-6">
+							<div class="product col-lg-4 col-md-6 col-sm-6">
 								<div class="product__item">
 									<div class="product__item__pic set-bg"
 										data-setbg="${p.getImagePath() }">
 										<ul class="product__item__pic__hover">
 											<li><a href="#"><i class="fa fa-heart"></i></a></li>
 											<li><a href="#"><i class="fa fa-retweet"></i></a></li>
-											<li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+											<li><a href="addtocart?pid=${p.getId()}"><i
+													class="fa fa-shopping-cart"></i></a></li>
 										</ul>
 									</div>
 									<div class="product__item__text">
@@ -252,7 +263,7 @@
 						</c:forEach>
 					</div>
 					<div class="product__pagination">
-						<button class="primary-btn" onclick="loadMore()"
+						<button onclick="loadMore()" class="primary-btn"
 							style="border: none;">Tải thêm</button>
 					</div>
 				</div>
@@ -266,9 +277,14 @@
 	<!-- Footer Section End -->
 	<script>
 		function loadMore() {
+			var amount = document.getElementsByClassName("product").length - 1;
+			console.log(amount);
 			$.ajax({
 				url : "/project_cuoi_ky/loadmore",
 				type : "get",
+				data : {
+					exist : amount
+				},
 				success : function(data) {
 					var row = document.getElementById("product");
 					row.innerHTML += data;

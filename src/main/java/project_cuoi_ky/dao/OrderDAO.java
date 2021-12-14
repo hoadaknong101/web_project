@@ -14,16 +14,22 @@ import project_cuoi_ky.dbcontext.DBContext;
 public class OrderDAO {
 	public static Connection conn = DBContext.getConnection();
 
-	public static void insertOrder(Order o) throws SQLException {
+	public static void insertOrder(Order o) {
 		String query = "insert into web_shopping.order(OrderID, OrderDate,OrderTotalPrice,CustomerID) Values(?,?,?,?)";
-		PreparedStatement ps = (PreparedStatement) conn.prepareStatement(query);
-		ps.setString(1, o.getId());
-		ps.setDate(2, o.getDate());
-		ps.setFloat(3, o.getTotalPrice());
-		ps.setInt(4, o.getCustomerID());
-		ps.executeUpdate();
+		PreparedStatement ps;
+		try {
+			ps = (PreparedStatement) conn.prepareStatement(query);
+			ps.setString(1, o.getId());
+			ps.setDate(2, o.getDate());
+			ps.setFloat(3, o.getTotalPrice());
+			ps.setInt(4, o.getCustomerID());
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
 	}
-	
+
 	public static void updatetOrder(Order o) throws SQLException {
 		String query = "update web_shopping.order set OrderDate=?,OrderTotalPrice=?,CustomerID=?  where OrderID =?";
 		PreparedStatement ps = (PreparedStatement) conn.prepareStatement(query);
@@ -33,15 +39,15 @@ public class OrderDAO {
 		ps.setInt(3, o.getCustomerID());
 		ps.executeUpdate();
 	}
-	
+
 	public static void deleteOrder(String id) throws SQLException {
 		String query = "delete from web_shopping.order where OrderID =?";
 		PreparedStatement ps = (PreparedStatement) conn.prepareStatement(query);
 		ps.setString(1, id);
 		ps.executeUpdate();
 	}
-	
-	public static ArrayList<Order> listOrder(){
+
+	public static ArrayList<Order> listOrder() {
 		String query = "select * from web_shopping.order";
 		Statement st;
 		ArrayList<Order> tmp = null;
@@ -61,19 +67,37 @@ public class OrderDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return tmp;
 	}
 
-	//Test function
+	public static Order getOrderByCustomerID(int id) {
+		String query = "select * from web_shopping.order where CustomerID = " + id;
+		Statement st;
+		Order c = new Order();
+		try {
+			st = (Statement) conn.createStatement();
+			ResultSet rs = st.executeQuery(query);
+			while (rs.next()) {
+				c.setId(rs.getString(1));
+				c.setDate(rs.getDate(2));
+				c.setTotalPrice(rs.getFloat(3));
+				c.setCustomerID(rs.getInt(4));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return c;
+	}
+
+	// Test function
 	public static void main(String[] args) throws SQLException {
-		
-		//insertOrder(new Order("4",Date.valueOf("2021-11-19"), 150000, 1));
-		//updatetOrder(new Order("4",Date.valueOf("2021-11-18"), 150000, 1));
-		//deleteOrder("3");
-		ArrayList<Order> tmp = listOrder();
-		tmp.forEach((n) -> {
-			System.out.println(n.toString());
-			});
+
+//		ArrayList<Order> tmp = listOrder();
+//		tmp.forEach((n) -> {
+//			System.out.println(n.toString());
+//		});
+		Order a = getOrderByCustomerID(15);
+		System.out.print(a.toString());
 	}
 }

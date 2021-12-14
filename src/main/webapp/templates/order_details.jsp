@@ -35,7 +35,7 @@ body {
 
 .table-wrapper {
 	background: #fff;
-	padding: 20px 25px;
+	padding: 20px 100px 30px 20px;
 	border-radius: 3px;
 	min-width: 1000px;
 	box-shadow: 0 1px 1px rgba(0, 0, 0, .05);

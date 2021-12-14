@@ -14,26 +14,28 @@ import project_cuoi_ky.beans.Product;
 import project_cuoi_ky.dao.CategoryDAO;
 import project_cuoi_ky.dao.ProductDAO;
 
-@WebServlet("/home")
-public class HomePageServlet extends HttpServlet {
+@WebServlet("/search")
+public class SearchServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public HomePageServlet() {
+	public SearchServlet() {
 		super();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
-		ArrayList<Catagory> listCategory = new ArrayList<Catagory>();
-		listCategory = CategoryDAO.listCategories();
+		request.setCharacterEncoding("UTF-8");
+
+		String txtSearch = (String) request.getParameter("search");
+
+		ArrayList<Product> listProducts = ProductDAO.findProductByName(txtSearch);
+		request.setAttribute("listProducts", listProducts);
+
+		ArrayList<Catagory> listCategory = CategoryDAO.listCategories();
 		request.setAttribute("listCategory", listCategory);
 
-		ArrayList<Product> featuredProducts = new ArrayList<Product>();
-		featuredProducts = ProductDAO.featuredProducts();
-		request.setAttribute("featuredProducts", featuredProducts);
-
-		request.getRequestDispatcher("templates/index.jsp").forward(request, response);
+		request.getRequestDispatcher("templates/shop.jsp").forward(request, response);
 
 	}
 
