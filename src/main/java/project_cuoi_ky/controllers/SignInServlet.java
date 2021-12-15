@@ -13,7 +13,7 @@ import project_cuoi_ky.beans.Order;
 import project_cuoi_ky.dao.CustomerDAO;
 import project_cuoi_ky.dao.OrderDAO;
 
-@WebServlet("/signin")
+@WebServlet(urlPatterns = { "/signin","/dangnhap","/login"})
 public class SignInServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

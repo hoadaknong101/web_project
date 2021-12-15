@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import project_cuoi_ky.beans.Customer;
 import project_cuoi_ky.dao.CustomerDAO;
 
-@WebServlet("/signup")
+@WebServlet(urlPatterns = { "/signup","/dangky","/register","/login"})
 public class SignUpServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
