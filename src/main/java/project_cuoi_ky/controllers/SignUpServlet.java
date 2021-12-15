@@ -37,26 +37,28 @@ public class SignUpServlet extends HttpServlet {
 		Customer customer = new Customer(0, name, email, phoneNumber, password);
 		int check = CustomerDAO.checkUserExist(customer);
 		String errorMessage = "";
-		if(password.equals(passwordConfirm) == false) {
+		if (password.equals(passwordConfirm) == false) {
 			errorMessage = "Sai mật khẩu xác thực";
 			request.setAttribute("errorMessage", errorMessage);
 			request.getRequestDispatcher("templates/sign_up.jsp").forward(request, response);
-		}
-		if (check == -1) {
-			errorMessage = "Email đã được sử dụng";
-			request.setAttribute("errorMessage", errorMessage);
-			request.getRequestDispatcher("templates/sign_up.jsp").forward(request, response);
 		} else {
-			if (check == 0) {
-				errorMessage = "Số ĐT đã được sử dụng";
+			if (check == -1) {
+				errorMessage = "Email đã được sử dụng";
 				request.setAttribute("errorMessage", errorMessage);
 				request.getRequestDispatcher("templates/sign_up.jsp").forward(request, response);
 			} else {
-				CustomerDAO.insertCustomer(customer);
-				System.out.println("Người dừng đăng ký thành công");
-				System.out.println(customer.toString());
-				response.sendRedirect(request.getContextPath() + "/signin");
+				if (check == 0) {
+					errorMessage = "Số ĐT đã được sử dụng";
+					request.setAttribute("errorMessage", errorMessage);
+					request.getRequestDispatcher("templates/sign_up.jsp").forward(request, response);
+				} else {
+					CustomerDAO.insertCustomer(customer);
+					System.out.println("Người dừng đăng ký thành công");
+					System.out.println(customer.toString());
+					response.sendRedirect(request.getContextPath() + "/signin");
+				}
 			}
 		}
+
 	}
 }
