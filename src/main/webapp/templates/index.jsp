@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>  
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
@@ -55,7 +56,7 @@
 								</c:if>
 								<c:if
 									test="${sessionScope.user.getEmail() != 'hoadaknong101@gmail.com'}">
-									<li><i class="fa fa-envelope"></i>vpp@laptrinhweb.com</li>
+									<li><i class="fa fa-envelope"></i>${sessionScope.user.getEmail()}</li>
 									<li>Miễn phí vận chuyển cho đơn hàng trên 500k</li>
 								</c:if>
 							</ul>
@@ -243,7 +244,7 @@
 								<h6>
 									<a href="chitietsanpham?pid=${p.getId()}">${p.getName()}</a>
 								</h6>
-								<h5>${p.getPrice()}</h5>
+								<h5><fmt:formatNumber type="number" pattern="###,###" value="${p.getPrice()}"/> VNĐ</h5>
 							</div>
 						</div>
 					</div>

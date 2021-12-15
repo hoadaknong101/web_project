@@ -53,7 +53,7 @@ public class ShoppingCartServlet extends HttpServlet {
 				total += x.getPrice();
 			}
 			request.setAttribute("total", total);
-
+			request.setAttribute("oid", c.getId());
 			request.getRequestDispatcher("templates/shopping_cart.jsp").forward(request, response);
 		}
 

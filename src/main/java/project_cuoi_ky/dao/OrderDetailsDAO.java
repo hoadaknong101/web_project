@@ -63,6 +63,18 @@ public class OrderDetailsDAO {
 
 	}
 
+	public static void deleteOrderDetails(String id) {
+		String query = "delete from web_shopping.order_details where OrderID = ?";
+		PreparedStatement ps;
+		try {
+			ps = (PreparedStatement) conn.prepareStatement(query);
+			ps.setString(1, id);
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
 	public static ArrayList<OrderDetail> listOrderDetails() throws SQLException {
 		String query = "select * from web_shopping.order_details";
 		Statement st = (Statement) conn.createStatement();
@@ -109,9 +121,7 @@ public class OrderDetailsDAO {
 
 	public static void main(String[] args) throws SQLException {
 
-		insertOrderDetails(new OrderDetail(1, "But may", 5, 30000, 1, "1"));
-
-		ArrayList<OrderDetail> tmp = new ArrayList<OrderDetail>();
+		ArrayList<OrderDetail> tmp = listByID("4");
 		tmp.forEach((n) -> {
 			System.out.println(n.toString());
 		});

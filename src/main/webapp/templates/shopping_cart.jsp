@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@page import="project_cuoi_ky.dao.ProductDAO"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -232,7 +232,7 @@
 												<a
 													href="${pageContext.request.contextPath}/chitietsanpham?pid=${o.getProductID()}">${o.getName()}</a>
 											</h5></td>
-										<td class="shoping__cart__price">${o.getPrice()}VNĐ</td>
+										<td class="shoping__cart__price"><fmt:formatNumber type="number" pattern="###,###" value="${o.getPrice()}"/> VNĐ</td>
 										<td class="shoping__cart__quantity">
 											<div class="quantity">
 												<div class="pro-qty">
@@ -241,8 +241,7 @@
 												</div>
 											</div>
 										</td>
-										<td class="shoping__cart__total">${o.getPrice() * o.getQuantity()}
-											VNĐ</td>
+										<td class="shoping__cart__total"><fmt:formatNumber type="number" pattern="###,###" value="${o.getPrice() * o.getQuantity()}"/> VNĐ</td>
 										<td class="shoping__cart__item__close"><a
 											href="deleteorderdetails?o=${o.getId()}"><span
 												class="icon_close"></span></a></td>
@@ -268,10 +267,10 @@
 					<div class="shoping__checkout">
 						<h5>Thanh Toán</h5>
 						<ul>
-							<li>Hiện tại<span>${total} VNĐ</span></li>
-							<li>Tổng cộng<span>${total} VNĐ</span></li>
+							<li>Hiện tại<span><fmt:formatNumber type="number" pattern="###,###" value="${total}"/> VNĐ</span></li>
+							<li>Tổng cộng<span><fmt:formatNumber type="number" pattern="###,###" value="${total}"/> VNĐ</span></li>
 						</ul>
-						<a href="#" class="primary-btn">THANH TOÁN</a>
+						<a href="${pageContext.request.contextPath}/checkout?oid=${oid}" class="primary-btn">THANH TOÁN</a>
 					</div>
 				</div>
 			</div>

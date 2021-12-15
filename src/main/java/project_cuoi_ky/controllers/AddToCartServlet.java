@@ -32,7 +32,11 @@ public class AddToCartServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		int quantity = 1;
 		int id;
-
+		String quantityString = (String) request.getParameter("quantity");
+		if(quantityString != null) {
+			quantity = Integer.parseInt(quantityString);
+		}
+		
 		ArrayList<OrderDetail> orderDetails = null;
 		HttpSession session = request.getSession();
 		Customer customer = (Customer) session.getAttribute("user");

@@ -42,7 +42,7 @@ public class SignInServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			Order order = OrderDAO.getOrderByCustomerID(customer.getId());
 			System.out.println("---Sign In Status---");
-			System.out.println("Order ID = "+order.getId() +"\nCustomer ID = " + customer.getId());
+			System.out.println("Order ID = " + order.getId() + "\nCustomer ID = " + customer.getId());
 			session.setAttribute("user", customer);
 			if (order.getId() != null) {
 				session.setAttribute("order", order);

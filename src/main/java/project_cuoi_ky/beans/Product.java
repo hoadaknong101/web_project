@@ -1,5 +1,7 @@
 package project_cuoi_ky.beans;
 
+import project_cuoi_ky.dao.CategoryDAO;
+
 public class Product {
 	private int id;
 	private String name;
@@ -81,6 +83,12 @@ public class Product {
 		CategoryID = categoryID;
 	}
 
+	public Catagory getCatagory() {
+		Catagory catagory = new Catagory();
+		catagory = CategoryDAO.findCatagory(this.CategoryID);
+		return catagory;
+	}
+	
 	@Override
 	public String toString() {
 		return "Product [id=" + id + ", name=" + name + ", price=" + price + ", imagePath=" + imagePath

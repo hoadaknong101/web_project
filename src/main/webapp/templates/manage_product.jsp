@@ -85,12 +85,12 @@ body {
 
 table.table tr th, table.table tr td {
 	border-color: #e9e9e9;
-	padding: 18px 14px;
+	padding: 12px 15px;
 	vertical-align: middle;
 }
 
 table.table tr th:first-child {
-	width: 120px;
+	width: 60px;
 }
 
 table.table tr th:last-child {

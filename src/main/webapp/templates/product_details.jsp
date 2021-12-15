@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>  
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -56,7 +57,7 @@
 								</c:if>
 								<c:if
 									test="${sessionScope.user.getEmail() != 'hoadaknong101@gmail.com'}">
-									<li><i class="fa fa-envelope"></i>vpp@laptrinhweb.com</li>
+									<li><i class="fa fa-envelope"></i>${sessionScope.user.getEmail()}</li>
 									<li>Miễn phí vận chuyển cho đơn hàng trên 500k</li>
 								</c:if>
 							</ul>
@@ -227,12 +228,12 @@
 				<div class="col-lg-6 col-md-6">
 					<div class="product__details__text">
 						<h3>${p.getName()}</h3>
-						<div class="product__details__price">${p.getPrice()}</div>
-						<p>${p.getDescription()}</p>
+						<div class="product__details__price"><fmt:formatNumber type="number" pattern="###,###" value="${p.getPrice()}"/> VNĐ</div>
+						<p>100% hàng chính hãng</p>
 						<div class="product__details__quantity">
 							<div class="quantity">
 								<div class="pro-qty">
-									<input type="text" value="1">
+									<input name="quantity" type="text" value="1">
 								</div>
 							</div>
 						</div>
