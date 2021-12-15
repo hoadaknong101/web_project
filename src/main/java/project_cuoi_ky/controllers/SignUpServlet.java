@@ -21,6 +21,8 @@ public class SignUpServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
+		String errorMessage = "";
+		request.setAttribute("errorMessage", errorMessage);
 		request.getRequestDispatcher("templates/sign_up.jsp").forward(request, response);
 	}
 
@@ -34,8 +36,8 @@ public class SignUpServlet extends HttpServlet {
 
 		Customer customer = new Customer(0, name, email, phoneNumber, password);
 		int check = CustomerDAO.checkUserExist(customer);
-		String errorMessage;
-		if(password != passwordConfirm) {
+		String errorMessage = "";
+		if(password.equals(passwordConfirm) == false) {
 			errorMessage = "Sai mật khẩu xác thực";
 			request.setAttribute("errorMessage", errorMessage);
 			request.getRequestDispatcher("templates/sign_up.jsp").forward(request, response);

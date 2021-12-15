@@ -203,7 +203,7 @@
 						<h2>${p.getName()}</h2>
 						<div class="breadcrumb__option">
 							<a href="${pageContext.request.contextPath}/home">Trang chủ</a> <a
-								href="${pageContext.request.contextPath}/home">Loại sản phẩm</a>
+								href="${pageContext.request.contextPath}/category?cid=${p.getCatagory().getId()}">${p.getCatagory().getName()}</a>
 							<span>${p.getName()}</span>
 						</div>
 					</div>
