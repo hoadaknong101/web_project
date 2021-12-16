@@ -295,6 +295,12 @@
 	</section>
 	<jsp:include page="footer_user.jsp"></jsp:include>
 	<!-- Js Plugins -->
+	<script>
+		function addtocart(){
+			var currentLocation = window.location;
+			
+		}
+	</script>
 	<script src="<c:url value="templates/js/jquery-3.3.1.min.js"/>"></script>
 	<script src="<c:url value="templates/js/bootstrap.min.js"/>"></script>
 	<script src="<c:url value="templates/js/jquery.nice-select.min.js"/>"></script>
