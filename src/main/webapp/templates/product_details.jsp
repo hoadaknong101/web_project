@@ -118,7 +118,8 @@
 										href="${pageContext.request.contextPath}/shoppingcart">Hóa
 											đơn</a></li>
 								</ul></li>
-							<li><a href="${pageContext.request.contextPath}/contact">Liên hệ</a></li>
+							<li><a href="${pageContext.request.contextPath}/contact">Liên
+									hệ</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -237,13 +238,13 @@
 						<div class="product__details__quantity">
 							<div class="quantity">
 								<div class="pro-qty">
-									<input name="quantity" type="text" value="1">
+									<input id="quantityproduct" name="quantity" type="text" value="1">
 								</div>
 							</div>
 						</div>
-						<a href="addtocart?pid=${p.getId()}" class="primary-btn">Thêm
-							vào giỏ hàng</a> <a href="#" class="heart-icon"><span
-							class="icon_heart_alt"></span></a>
+						<button class="primary-btn"
+							onclick="addtocard('${pageContext.request.contextPath}', '${p.getId()}');">Thêm
+							vào giỏ hàng</button>
 						<ul>
 							<li><b>Chia sẻ : </b>
 								<div class="share">
@@ -255,6 +256,13 @@
 						</ul>
 					</div>
 				</div>
+				<script>
+					function addtocard(path, id) {
+						var quantity = document.getElementById('quantityproduct').value;
+						window.location.href = path + "/addtocart?pid=" + id
+								+ "&quantity=" + quantity;
+					}
+				</script>
 				<div class="col-lg-12">
 					<div class="product__details__tab">
 						<ul class="nav nav-tabs" role="tablist">

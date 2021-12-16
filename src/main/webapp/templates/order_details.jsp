@@ -308,10 +308,10 @@ table.table .avatar {
 					<hr>
 					<ul class="nav nav-pills flex-column mb-auto">
 						<li class="nav-item"><a href="${pageContext.request.contextPath}/manageproduct"
-							class="nav-link text-white active" aria-current="page">
+							class="nav-link text-white" aria-current="page">
 								Sản phẩm </a></li>
 						<li><a href="${pageContext.request.contextPath}/manageorder"
-							class="nav-link text-white"> Đơn hàng </a></li>
+							class="nav-link text-white active"> Đơn hàng </a></li>
 						<li><a
 							href="${pageContext.request.contextPath}/managecustomer"
 							class="nav-link text-white"> Khách hàng </a></li>

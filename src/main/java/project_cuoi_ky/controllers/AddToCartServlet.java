@@ -33,10 +33,12 @@ public class AddToCartServlet extends HttpServlet {
 		int quantity = 1;
 		int id;
 		String quantityString = (String) request.getParameter("quantity");
-		if(quantityString != null) {
-			quantity = Integer.parseInt(quantityString);
+		if (quantityString != null) {
+			if (quantityString.trim().equals("") == false) {
+				quantity = Integer.parseInt(quantityString);
+			}
 		}
-		
+
 		ArrayList<OrderDetail> orderDetails = null;
 		HttpSession session = request.getSession();
 		Customer customer = (Customer) session.getAttribute("user");
@@ -44,7 +46,7 @@ public class AddToCartServlet extends HttpServlet {
 		if (customer == null) {
 			System.out.println("Customer == null");
 			System.out.println("-------------------------\n");
-			response.sendRedirect(request.getContextPath() + "/signin");			
+			response.sendRedirect(request.getContextPath() + "/signin");
 		} else {
 			String OrderID = Long.toString(System.currentTimeMillis());
 			if (request.getParameter("pid") != null) {
@@ -86,13 +88,13 @@ public class AddToCartServlet extends HttpServlet {
 							o.setOrderID(order.getId());
 							o.setPrice(product.getPrice());
 							o.setProductID(product.getId());
-							o.setQuantity(product.getQuantity());
+							o.setQuantity(quantity);
 							orderDetails.add(o);
 							OrderDetailsDAO.insertOrderDetails(o);
 						}
 						float totalPrice = 0;
 						for (OrderDetail detail : orderDetails) {
-							totalPrice += detail.getPrice() *detail.getQuantity();
+							totalPrice += detail.getPrice() * detail.getQuantity();
 						}
 						order.setTotalPrice(totalPrice);
 						OrderDAO.updatetOrder(order);
