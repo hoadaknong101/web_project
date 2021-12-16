@@ -37,7 +37,7 @@
 <link rel="stylesheet" href="<c:url value="templates/css/style.css" />"
 	type="text/css" />
 <style>
-.categoytag:hover{
+.categoytag:hover {
 	color: #002eff;
 }
 </style>
@@ -122,7 +122,8 @@
 										href="${pageContext.request.contextPath}/shoppingcart">Giỏ
 											hàng</a></li>
 								</ul></li>
-							<li><a href="${pageContext.request.contextPath}/contact">Liên hệ</a></li>
+							<li><a href="${pageContext.request.contextPath}/contact">Liên
+									hệ</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -181,6 +182,17 @@
 								<h5>+84 868 690 043</h5>
 								<span>hỗ trợ 24/7</span>
 							</div>
+						</div>
+					</div>
+					<div class="hero__item set-bg"
+						data-setbg="<c:url value="templates/img/hero/banner.jpg"/>">
+						<div class="hero__text">
+							<span>VĂN PHÒNG PHẨM</span>
+							<h2>
+								Sản phẩm <br />100% chính hãng
+							</h2>
+							<p>Miễn phí vận chuyển đến 0đ</p>
+							<a href="#" class="primary-btn">MUA NGAY</a>
 						</div>
 					</div>
 				</div>

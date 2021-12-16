@@ -210,9 +210,9 @@
 					<c:forEach var="p" items="${listCategory}">
 						<div class="col-lg-3">
 							<div class="categories__item set-bg"
-								data-setbg="<c:url value="templates/img/categories/cat-1.jpg"/>">
+								data-setbg="<c:url value="templates/img/categories/cat-${p.getId()}.jpg"/>">
 								<h5>
-									<a href="#">${p.getName()}</a>
+									<a href="category?cid=${p.getId()}">${p.getName()}</a>
 								</h5>
 							</div>
 						</div>
@@ -270,14 +270,14 @@
 			<div class="row">
 				<div class="col-lg-6 col-md-6 col-sm-6">
 					<div class="banner__pic">
-						<img src="<c:url value="templates/img/banner/banner-1.jpg"/>"
-							alt="" width="570" height="270" />
+						<a href="${pageContext.request.contextPath}/shop"><img src="<c:url value="templates/img/banner/banner-1.jpg"/>"
+							alt="" width="570" height="270" /></a>
 					</div>
 				</div>
 				<div class="col-lg-6 col-md-6 col-sm-6">
 					<div class="banner__pic">
-						<img src="<c:url value = "templates/img/banner/banner-2.jpg"/>"
-							alt="" width="570" height="270" />
+						<a href="${pageContext.request.contextPath}/shop"><img src="<c:url value = "templates/img/banner/banner-2.jpg"/>"
+							alt="" width="570" height="270" /></a>
 					</div>
 				</div>
 			</div>
