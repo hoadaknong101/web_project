@@ -381,7 +381,6 @@ table.table .avatar {
 							<th>Họ và tên</th>
 							<th>Email</th>
 							<th>Số ĐT</th>
-							<th>Mật khẩu</th>
 							<th>Hành động</th>
 						</tr>
 					</thead>
@@ -392,7 +391,6 @@ table.table .avatar {
 								<td>${c.getName()}</td>
 								<td>${c.getEmail()}</td>
 								<td>${c.getPhoneNumber()}</td>
-								<td>${c.getPassword()}</td>
 								<td><a href="editcustomer?cid=${c.getId()}"><i
 										class="material-icons" title="Edit">&#xE254;</i></a> <a
 									onclick="testConfirmDialog(${c.getId()});"
