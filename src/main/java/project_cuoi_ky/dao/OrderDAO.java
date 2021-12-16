@@ -30,14 +30,20 @@ public class OrderDAO {
 
 	}
 
-	public static void updatetOrder(Order o) throws SQLException {
+	public static void updatetOrder(Order o) {
 		String query = "update web_shopping.order set OrderDate=?,OrderTotalPrice=?,CustomerID=?  where OrderID =?";
-		PreparedStatement ps = (PreparedStatement) conn.prepareStatement(query);
-		ps.setString(4, o.getId());
-		ps.setDate(1, o.getDate());
-		ps.setFloat(2, o.getTotalPrice());
-		ps.setInt(3, o.getCustomerID());
-		ps.executeUpdate();
+		PreparedStatement ps;
+		try {
+			ps = (PreparedStatement) conn.prepareStatement(query);
+			ps.setString(4, o.getId());
+			ps.setDate(1, o.getDate());
+			ps.setFloat(2, o.getTotalPrice());
+			ps.setInt(3, o.getCustomerID());
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
 	}
 
 	public static void deleteOrder(String id) throws SQLException {

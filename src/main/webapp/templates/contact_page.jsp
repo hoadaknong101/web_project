@@ -3,20 +3,22 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
-<html lang="zxx">
+<html>
+
 <head>
 <meta charset="UTF-8">
 <meta name="description" content="Ogani Template">
 <meta name="keywords" content="Ogani, unica, creative, html">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Cửa hàng</title>
+<title>Liên hệ</title>
 
 <!-- Google Font -->
 <link
 	href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap"
 	rel="stylesheet">
 <link rel="icon" href="<c:url value="templates/img/icon.png"/>" />
+
 <!-- Css Styles -->
 <link rel="stylesheet"
 	href="<c:url value="templates/css/bootstrap.min.css"/>" type="text/css" />
@@ -37,7 +39,7 @@
 <link rel="stylesheet" href="<c:url value="templates/css/style.css" />"
 	type="text/css" />
 <style>
-.categoytag:hover{
+.hero .container .row .col-lg-3 .hero__categories ul li a:hover {
 	color: #002eff;
 }
 </style>
@@ -45,6 +47,7 @@
 
 <body>
 	<jsp:include page="header_user.jsp"></jsp:include>
+	<!-- Header Section Begin -->
 	<header class="header">
 		<div class="header__top">
 			<div class="container">
@@ -111,18 +114,19 @@
 				<div class="col-lg-6">
 					<nav class="header__menu">
 						<ul>
-							<li><a href="${pageContext.request.contextPath}/home">Home</a></li>
-							<li class="active"><a
-								href="${pageContext.request.contextPath}/shop">Sản phẩm</a></li>
+							<li ><a
+								href="${pageContext.request.contextPath}/home">Home</a></li>
+							<li><a href="${pageContext.request.contextPath}/shop">Sản
+									phẩm</a></li>
 							<li><a href="#">Trang</a>
 								<ul class="header__menu__dropdown">
 									<li><a href="${pageContext.request.contextPath}/shop">Sản
 											phẩm</a></li>
 									<li><a
-										href="${pageContext.request.contextPath}/shoppingcart">Giỏ
-											hàng</a></li>
+										href="${pageContext.request.contextPath}/shoppingcart">Hóa
+											đơn</a></li>
 								</ul></li>
-							<li><a href="${pageContext.request.contextPath}/contact">Liên hệ</a></li>
+							<li class="active"><a href="${pageContext.request.contextPath}/contact">Liên hệ</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -183,21 +187,33 @@
 							</div>
 						</div>
 					</div>
+					<div class="hero__item set-bg"
+						data-setbg="<c:url value="templates/img/hero/banner.jpg"/>">
+						<div class="hero__text">
+							<span>VĂN PHÒNG PHẨM</span>
+							<h2>
+								Sản phẩm <br />100% chính hãng
+							</h2>
+							<p>Miễn phí vận chuyển đến 0đ</p>
+							<a href="#" class="primary-btn">MUA NGAY</a>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</section>
+	<!-- Hero Section End -->
+
 	<!-- Breadcrumb Section Begin -->
 	<section class="breadcrumb-section set-bg"
-		data-setbg="<c:url value="templates/img/breadcrumb.jpg"/>">
+		data-setbg="<c:url value="templates/img/breadcrumb.jpg"/>" >
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12 text-center">
 					<div class="breadcrumb__text">
-						<h2>VĂN PHÒNG PHẨM</h2>
+						<h2>LIÊN HỆ</h2>
 						<div class="breadcrumb__option">
-							<a href="${pageContext.request.contextPath}/home">Trang chủ</a> <span>Cửa
-								hàng</span>
+							<a href="${pageContext.request.contextPath}/home">Trang chủ</a> <span>Liên hệ</span>
 						</div>
 					</div>
 				</div>
@@ -206,102 +222,86 @@
 	</section>
 	<!-- Breadcrumb Section End -->
 
-	<!-- Product Section Begin -->
-	<section class="product spad">
+	<!-- Contact Section Begin -->
+	<section class="contact spad">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-3 col-md-5">
-					<div class="sidebar">
-						<div class="sidebar__item">
-							<h4>Văn phòng phẩm</h4>
-							<ul>
-								<c:forEach var="p" items="${listCategory}">
-									<li><a class="categoytag"
-										href="category?cid=${p.getId() }">${p.getName()}</a></li>
-								</c:forEach>
-							</ul>
-						</div>
+				<div class="col-lg-3 col-md-3 col-sm-6 text-center">
+					<div class="contact__widget">
+						<span class="icon_phone"></span>
+						<h4>Hotline</h4>
+						<p>+84 868 690 043</p>
 					</div>
 				</div>
-				<div class="col-lg-9 col-md-7">
-					<div class="filter__item">
-						<div class="row">
-							<div class="col-lg-4 col-md-5">
-								<div class="filter__sort">
-									<span>Sắp xếp</span> <select>
-										<option value="0">Mặc định</option>
-									</select>
-								</div>
-							</div>
-						</div>
+				<div class="col-lg-3 col-md-3 col-sm-6 text-center">
+					<div class="contact__widget">
+						<span class="icon_pin_alt"></span>
+						<h4>Địa chỉ</h4>
+						<p>Số 1 Võ Văn Ngân</p>
 					</div>
-					<div class="row" id="product">
-						<c:forEach var="p" items="${listProducts}">
-							<div class="product col-lg-4 col-md-6 col-sm-6">
-								<div class="product__item">
-									<div class="product__item__pic set-bg"
-										data-setbg="${p.getImagePath() }">
-										<ul class="product__item__pic__hover">
-											<li><a href="#"><i class="fa fa-heart"></i></a></li>
-											<li><a href="#"><i class="fa fa-retweet"></i></a></li>
-											<li><a href="addtocart?pid=${p.getId()}"><i
-													class="fa fa-shopping-cart"></i></a></li>
-										</ul>
-									</div>
-									<div class="product__item__text">
-										<h6>
-											<a href="chitietsanpham?pid=${p.getId()}">${p.getName() }</a>
-										</h6>
-										<h5>
-											<fmt:formatNumber type="number" pattern="###,###"
-												value="${p.getPrice()}" />
-											VNĐ
-										</h5>
-									</div>
-								</div>
-							</div>
-						</c:forEach>
+				</div>
+				<div class="col-lg-3 col-md-3 col-sm-6 text-center">
+					<div class="contact__widget">
+						<span class="icon_clock_alt"></span>
+						<h4>Giờ mở cửa</h4>
+						<p>10:00 AM -> 23:00 PM </p>
 					</div>
-					<div class="product__pagination">
-						<button onclick="loadMore()" class="primary-btn"
-							style="border: none;">Tải thêm</button>
+				</div>
+				<div class="col-lg-3 col-md-3 col-sm-6 text-center">
+					<div class="contact__widget">
+						<span class="icon_mail_alt"></span>
+						<h4>Email</h4>
+						<p>vpp@laptrinhweb.com</p>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
-	<!-- Product Section End -->
+	<!-- Contact Section End -->
+
+	<!-- Map Begin -->
+	<div class="map">
+		<iframe
+			src="https:/www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.497145816662!2d106.76939931480148!3d10.849741492271825!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317527a03a6378c5%3A0xb4a838949a4175c8!2zMSDEkC4gVsO1IFbEg24gTmfDom4sIExpbmggQ2hp4buDdSwgVGjhu6cgxJDhu6ljLCBUaMOgbmggcGjhu5EgSOG7kyBDaMOtIE1pbmg!5e0!3m2!1svi!2s!4v1639631144068!5m2!1svi!2s"
+			height="500" style="border: 0;" allowfullscreen=""
+			aria-hidden="false" tabindex="0"></iframe>
+	</div>
+	<!-- Map End -->
+
+	<!-- Contact Form Begin -->
+	<div class="contact-form spad">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="contact__form__title">
+						<h2>Để lại lời nhắn</h2>
+					</div>
+				</div>
+			</div>
+			<form action="#">
+				<div class="row">
+					<div class="col-lg-6 col-md-6">
+						<input type="text" placeholder="Họ và tên">
+					</div>
+					<div class="col-lg-6 col-md-6">
+						<input type="text" placeholder="Email">
+					</div>
+					<div class="col-lg-12 text-center">
+						<textarea placeholder="Your message"></textarea>
+						<button type="submit" class="site-btn">GỬI</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<!-- Contact Form End -->
 
 	<!-- Footer Section Begin -->
 	<jsp:include page="footer_user.jsp"></jsp:include>
 	<!-- Footer Section End -->
-	<script>
-		function loadMore() {
-			var amount = document.getElementsByClassName("product").length - 1;
-			console.log(amount);
-			$.ajax({
-				url : "/project_cuoi_ky/loadmore",
-				type : "get",
-				data : {
-					exist : amount
-				},
-				success : function(data) {
-					var row = document.getElementById("product");
-					row.innerHTML += data;
-				},
-				error : function(xhr) {
 
-				}
-			});
-		}
-	</script>
 	<!-- Js Plugins -->
-	<script src="<c:url value="templates/js/jquery-3.3.1.min.js"/>">
-		
-	</script>
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+	<script src="<c:url value="templates/js/jquery-3.3.1.min.js"/>"></script>
 	<script src="<c:url value="templates/js/bootstrap.min.js"/>"></script>
 	<script src="<c:url value="templates/js/jquery.nice-select.min.js"/>"></script>
 	<script src="<c:url value="templates/js/jquery-ui.min.js"/>"></script>

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>  
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
@@ -36,6 +36,12 @@
 	href="<c:url value="templates/css/slicknav.min.css"/>" type="text/css" />
 <link rel="stylesheet" href="<c:url value="templates/css/style.css" />"
 	type="text/css" />
+<style>
+.hero .container .row .col-lg-3 .hero__categories ul li a:hover{
+	color: #002eff;
+}
+</style>
+
 </head>
 
 <body>
@@ -118,7 +124,7 @@
 										href="${pageContext.request.contextPath}/shoppingcart">Hóa
 											đơn</a></li>
 								</ul></li>
-							<li><a href="./contact.html">Liên hệ</a></li>
+							<li><a href="${pageContext.request.contextPath}/contact">Liên hệ</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -244,7 +250,11 @@
 								<h6>
 									<a href="chitietsanpham?pid=${p.getId()}">${p.getName()}</a>
 								</h6>
-								<h5><fmt:formatNumber type="number" pattern="###,###" value="${p.getPrice()}"/> VNĐ</h5>
+								<h5>
+									<fmt:formatNumber type="number" pattern="###,###"
+										value="${p.getPrice()}" />
+									VNĐ
+								</h5>
 							</div>
 						</div>
 					</div>

@@ -10,15 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import project_cuoi_ky.beans.Catagory;
-import project_cuoi_ky.beans.Product;
 import project_cuoi_ky.dao.CategoryDAO;
-import project_cuoi_ky.dao.ProductDAO;
 
-@WebServlet("/home")
-public class HomePageServlet extends HttpServlet {
+@WebServlet("/contact")
+public class ContactServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public HomePageServlet() {
+	public ContactServlet() {
 		super();
 	}
 
@@ -29,12 +27,7 @@ public class HomePageServlet extends HttpServlet {
 		listCategory = CategoryDAO.listCategories();
 		request.setAttribute("listCategory", listCategory);
 
-		ArrayList<Product> featuredProducts = new ArrayList<Product>();
-		featuredProducts = ProductDAO.featuredProducts();
-		request.setAttribute("featuredProducts", featuredProducts);
-
-		request.getRequestDispatcher("templates/index.jsp").forward(request, response);
-
+		request.getRequestDispatcher("templates/contact_page.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

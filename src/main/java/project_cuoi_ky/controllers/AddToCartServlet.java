@@ -61,6 +61,7 @@ public class AddToCartServlet extends HttpServlet {
 						orderDetail.setPrice(product.getPrice());
 						orderDetail.setProductID(product.getId());
 						orderDetail.setOrderID(order.getId());
+						order.setTotalPrice(orderDetail.getPrice() * orderDetail.getQuantity());
 						OrderDAO.insertOrder(order);
 						OrderDetailsDAO.insertOrderDetails(orderDetail);
 						session.setAttribute("order", order);
@@ -89,6 +90,12 @@ public class AddToCartServlet extends HttpServlet {
 							orderDetails.add(o);
 							OrderDetailsDAO.insertOrderDetails(o);
 						}
+						float totalPrice = 0;
+						for (OrderDetail detail : orderDetails) {
+							totalPrice += detail.getPrice() *detail.getQuantity();
+						}
+						order.setTotalPrice(totalPrice);
+						OrderDAO.updatetOrder(order);
 						session.setAttribute("order", order);
 					}
 					System.out.println("-------------------------\n");

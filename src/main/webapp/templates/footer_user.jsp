@@ -22,19 +22,19 @@
 				<div class="footer__widget">
 					<h6>Thông Tin</h6>
 					<ul>
-						<li><a href="#">MSSV</a></li>
-						<li><a href="#">19110365</a></li>
-						<li><a href="#">19110426</a></li>
-						<li><a href="#">19110463</a></li>
+						<li>MSSV</li>
+						<li><a target="_blank" href="https://www.facebook.com/hoaffffff">19110365</a></li>
+						<li><a target="_blank" href="https://www.facebook.com/fi.fine.21">19110426</a></li>
+						<li><a target="_blank" href="https://www.facebook.com/KPVDN123">19110463</a></li>
 						<li><a target="_blank"
 							href="https://www.google.com/maps/place/1+%C4%90.+V%C3%B5+V%C4%83n+Ng%C3%A2n,+Linh+Chi%E1%BB%83u,+Th%E1%BB%A7+%C4%90%E1%BB%A9c,+Th%C3%A0nh+ph%E1%BB%91+H%E1%BB%93+Ch%C3%AD+Minh,+Vi%E1%BB%87t+Nam/@10.8497468,106.7693993,17z/data=!3m1!4b1!4m5!3m4!1s0x317527a03a6378c5:0xb4a838949a4175c8!8m2!3d10.8497415!4d106.771588">Địa
 								chỉ</a></li>
 					</ul>
 					<ul>
-						<li><a href="#">Họ và tên</a></li>
-						<li><a href="#">Phạm Đinh Quốc Hòa</a></li>
-						<li><a href="#">Võ Nhật Phi</a></li>
-						<li><a href="#">Phạm Văn Thắng</a></li>
+						<li>Họ và tên</li>
+						<li><a target="_blank" href="https://www.facebook.com/hoaffffff">Phạm Đinh Quốc Hòa</a></li>
+						<li><a target="_blank" href="https://www.facebook.com/fi.fine.21">Võ Nhật Phi</a></li>
+						<li><a target="_blank" href="https://www.facebook.com/KPVDN123">Phạm Văn Thắng</a></li>
 					</ul>
 				</div>
 			</div>
@@ -42,8 +42,8 @@
 				<div class="footer__widget">
 					<h6>Hãy tham gia bảng tin của chúng tôi</h6>
 					<p>Hãy nhập mail để tham gia với chúng tôi</p>
-					<form action="#">
-						<input type="text" placeholder="Enter your mail">
+					<form action="https://online.hcmute.edu.vn/">
+						<input type="text" placeholder="Email của bạn">
 						<button type="submit" class="site-btn">Đăng ký</button>
 					</form>
 					<div class="footer__widget__social">

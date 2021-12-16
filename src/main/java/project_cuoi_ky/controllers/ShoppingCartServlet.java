@@ -50,7 +50,7 @@ public class ShoppingCartServlet extends HttpServlet {
 
 			float total = 0;
 			for (OrderDetail x : listOrderDetails) {
-				total += x.getPrice();
+				total += x.getPrice() * x.getQuantity();
 			}
 			request.setAttribute("total", total);
 			request.setAttribute("oid", c.getId());

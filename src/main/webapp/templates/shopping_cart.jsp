@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>  
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,6 +35,29 @@
 	href="<c:url value="templates/css/slicknav.min.css"/>" type="text/css" />
 <link rel="stylesheet" href="<c:url value="templates/css/style.css" />"
 	type="text/css" />
+<style>
+.buttonchangequantity {
+	background-color: #008cba; /* Green */
+	border: none;
+	color: white;
+	padding: 12px 12px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+}
+
+.quantitynumber {
+	width: 25%;
+	padding: 12px 12px;
+	text-align: center;
+	display: inline-block;
+	border: 0px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+	color: #008cba;
+}
+</style>
 </head>
 <body>
 	<!-- Page Preloder -->
@@ -116,7 +139,7 @@
 										href="${pageContext.request.contextPath}/shoppingcart">Giỏ
 											hàng</a></li>
 								</ul></li>
-							<li><a href="./contact.html">Liên hệ</a></li>
+							<li><a href="${pageContext.request.contextPath}/contact">Liên hệ</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -232,16 +255,20 @@
 												<a
 													href="${pageContext.request.contextPath}/chitietsanpham?pid=${o.getProductID()}">${o.getName()}</a>
 											</h5></td>
-										<td class="shoping__cart__price"><fmt:formatNumber type="number" pattern="###,###" value="${o.getPrice()}"/> VNĐ</td>
+										<td class="shoping__cart__price"><fmt:formatNumber
+												type="number" pattern="###,###" value="${o.getPrice()}" />
+											VNĐ</td>
 										<td class="shoping__cart__quantity">
-											<div class="quantity">
-												<div class="pro-qty">
-													<input name="quantity" type="text"
-														value="${o.getQuantity()}">
-												</div>
-											</div>
+											<button class="buttonchangequantity"
+												onclick="decreaseQuantity('${pageContext.request.contextPath}', '${o.getId()}')">-</button>
+											<input class="quantitynumber" id="quantity_${o.getId()}"
+											type="text" value="${o.getQuantity()}" readonly>
+											<button class="buttonchangequantity"
+												onclick="increaseQuantity('${pageContext.request.contextPath}', '${o.getId()}');">+</button>
 										</td>
-										<td class="shoping__cart__total"><fmt:formatNumber type="number" pattern="###,###" value="${o.getPrice() * o.getQuantity()}"/> VNĐ</td>
+										<td class="shoping__cart__total"><fmt:formatNumber
+												type="number" pattern="###,###"
+												value="${o.getPrice() * o.getQuantity()}" /> VNĐ</td>
 										<td class="shoping__cart__item__close"><a
 											href="deleteorderdetails?o=${o.getId()}"><span
 												class="icon_close"></span></a></td>
@@ -252,6 +279,22 @@
 					</div>
 				</div>
 			</div>
+			<script>
+				function increaseQuantity(path, id) {
+					var quantity = document.getElementById('quantity_' + id).value;
+					window.location.href = path + "/increasequantity?id=" + id;
+				}
+				function decreaseQuantity(path, id) {
+					var quantity = parseFloat(document
+							.getElementById('quantity_' + id).value);
+					if (quantity == 1) {
+						document.getElementById('quantity_' + id).value = 1;
+					} else {
+						window.location.href = path + "/decreasequantity?id="
+								+ id;
+					}
+				}
+			</script>
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="shoping__cart__btns">
@@ -267,10 +310,13 @@
 					<div class="shoping__checkout">
 						<h5>Thanh Toán</h5>
 						<ul>
-							<li>Hiện tại<span><fmt:formatNumber type="number" pattern="###,###" value="${total}"/> VNĐ</span></li>
-							<li>Tổng cộng<span><fmt:formatNumber type="number" pattern="###,###" value="${total}"/> VNĐ</span></li>
+							<li>Hiện tại<span><fmt:formatNumber type="number"
+										pattern="###,###" value="${total}" /> VNĐ</span></li>
+							<li>Tổng cộng<span><fmt:formatNumber type="number"
+										pattern="###,###" value="${total}" /> VNĐ</span></li>
 						</ul>
-						<a href="${pageContext.request.contextPath}/checkout?oid=${oid}" class="primary-btn">THANH TOÁN</a>
+						<a href="${pageContext.request.contextPath}/checkout?oid=${oid}"
+							class="primary-btn">THANH TOÁN</a>
 					</div>
 				</div>
 			</div>

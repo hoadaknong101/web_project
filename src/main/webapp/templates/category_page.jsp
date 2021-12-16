@@ -117,7 +117,7 @@
 										href="${pageContext.request.contextPath}/shoppingcart">Hóa
 											đơn</a></li>
 								</ul></li>
-							<li><a href="./contact.html">Liên hệ</a></li>
+							<li><a href="${pageContext.request.contextPath}/contact">Liên hệ</a></li>
 						</ul>
 					</nav>
 				</div>

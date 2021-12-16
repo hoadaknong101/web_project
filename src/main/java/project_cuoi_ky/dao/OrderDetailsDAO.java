@@ -75,6 +75,7 @@ public class OrderDetailsDAO {
 		}
 
 	}
+
 	public static ArrayList<OrderDetail> listOrderDetails() throws SQLException {
 		String query = "select * from web_shopping.order_details";
 		Statement st = (Statement) conn.createStatement();
@@ -91,6 +92,27 @@ public class OrderDetailsDAO {
 			tmp.add(c);
 		}
 		return tmp;
+	}
+
+	public static OrderDetail getOrderDetailByID(int id) {
+		OrderDetail o = new OrderDetail();
+		String query = "select * from web_shopping.order_details where OrderDetailsID = " + id;
+		Statement st;
+		try {
+			st = (Statement) conn.createStatement();
+			ResultSet rs = st.executeQuery(query);
+			while (rs.next()) {
+				o.setId(rs.getInt(1));
+				o.setName(rs.getString(2));
+				o.setQuantity(rs.getInt(3));
+				o.setPrice(rs.getFloat(4));
+				o.setProductID(rs.getInt(5));
+				o.setOrderID(rs.getString(6));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return o;
 	}
 
 	public static ArrayList<OrderDetail> listByID(String id) {
