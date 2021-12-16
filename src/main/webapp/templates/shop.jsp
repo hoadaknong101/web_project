@@ -254,10 +254,9 @@
 									<div class="product__item__pic set-bg"
 										data-setbg="${p.getImagePath() }">
 										<ul class="product__item__pic__hover">
-											<li><a href="#"><i class="fa fa-heart"></i></a></li>
-											<li><a href="#"><i class="fa fa-retweet"></i></a></li>
-											<li><a href="addtocart?pid=${p.getId()}"><i
-													class="fa fa-shopping-cart"></i></a></li>
+											<li><a><i class="fa fa-heart"></i></a></li>
+											<li><a><i class="fa fa-retweet"></i></a></li>
+											<li><a><i class="fa fa-shopping-cart" onclick="addtocart('${pageContext.request.contextPath}','${p.getId()}')"></i></a></li>
 										</ul>
 									</div>
 									<div class="product__item__text">
@@ -305,6 +304,11 @@
 
 				}
 			});
+			function addtocart(path, id) {
+				var currentpath = window.location;
+				document.location.href = path + "/addtocart?pid=" + id
+						+ "&currentpath=" + currentpath;
+			}
 		}
 	</script>
 	<!-- Js Plugins -->

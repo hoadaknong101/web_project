@@ -238,12 +238,13 @@
 						<div class="product__details__quantity">
 							<div class="quantity">
 								<div class="pro-qty">
-									<input id="quantityproduct" name="quantity" type="text" value="1">
+									<input id="quantityproduct" name="quantity" type="text"
+										value="1">
 								</div>
 							</div>
 						</div>
 						<button class="primary-btn"
-							onclick="addtocard('${pageContext.request.contextPath}', '${p.getId()}');">Thêm
+							onclick="addtocart('${pageContext.request.contextPath}', '${p.getId()}');">Thêm
 							vào giỏ hàng</button>
 						<ul>
 							<li><b>Chia sẻ : </b>
@@ -256,13 +257,7 @@
 						</ul>
 					</div>
 				</div>
-				<script>
-					function addtocard(path, id) {
-						var quantity = document.getElementById('quantityproduct').value;
-						window.location.href = path + "/addtocart?pid=" + id
-								+ "&quantity=" + quantity;
-					}
-				</script>
+
 				<div class="col-lg-12">
 					<div class="product__details__tab">
 						<ul class="nav nav-tabs" role="tablist">
@@ -306,10 +301,10 @@
 							<div class="product__item__pic set-bg"
 								data-setbg="${r.getImagePath()}">
 								<ul class="product__item__pic__hover">
-									<li><a href="#"><i class="fa fa-heart"></i></a></li>
-									<li><a href="#"><i class="fa fa-retweet"></i></a></li>
-									<li><a href="addtocart?pid=${r.getId()}"><i
-											class="fa fa-shopping-cart"></i></a></li>
+									<li><a><i class="fa fa-heart"></i></a></li>
+									<li><a><i class="fa fa-retweet"></i></a></li>
+									<li><a><i class="fa fa-shopping-cart"
+											onclick="addtocart('${pageContext.request.contextPath}','${r.getId()}');"></i></a></li>
 								</ul>
 							</div>
 							<div class="product__item__text">
@@ -330,7 +325,14 @@
 		</div>
 	</section>
 	<!-- Related Product Section End -->
-
+	<script>
+		function addtocart(path, id) {
+			var quantity = document.getElementById('quantityproduct').value;
+			var currentpath = window.location;
+			window.location.href = path + "/addtocart?pid=" + id + "&quantity="
+					+ quantity + "&currentpath=" + currentpath;
+		}
+	</script>
 	<!-- Footer Section Begin -->
 	<jsp:include page="footer_user.jsp"></jsp:include>
 	<!-- Footer Section End -->

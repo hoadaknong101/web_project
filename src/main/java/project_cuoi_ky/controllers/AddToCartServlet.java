@@ -30,6 +30,8 @@ public class AddToCartServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
+		String currentPath = (String) request.getParameter("currentpath");
+
 		int quantity = 1;
 		int id;
 		String quantityString = (String) request.getParameter("quantity");
@@ -101,12 +103,30 @@ public class AddToCartServlet extends HttpServlet {
 						session.setAttribute("order", order);
 					}
 					System.out.println("-------------------------\n");
-					response.sendRedirect(request.getContextPath() + "/home");
+					if (currentPath != null) {
+						if (currentPath.trim().equals("") == false) {
+							response.sendRedirect(currentPath);
+						}
+					} else {
+						response.sendRedirect(request.getContextPath() + "/home");
+					}
+				} else {
+					if (currentPath != null) {
+						if (currentPath.trim().equals("") == false) {
+							response.sendRedirect(currentPath);
+						}
+					} else {
+						response.sendRedirect(request.getContextPath() + "/home");
+					}
+				}
+			} else {
+				if (currentPath != null) {
+					if (currentPath.trim().equals("") == false) {
+						response.sendRedirect(currentPath);
+					}
 				} else {
 					response.sendRedirect(request.getContextPath() + "/home");
 				}
-			} else {
-				response.sendRedirect(request.getContextPath() + "/home");
 			}
 		}
 	}

@@ -37,7 +37,7 @@
 <link rel="stylesheet" href="<c:url value="templates/css/style.css" />"
 	type="text/css" />
 <style>
-.hero .container .row .col-lg-3 .hero__categories ul li a:hover{
+.hero .container .row .col-lg-3 .hero__categories ul li a:hover {
 	color: #002eff;
 }
 </style>
@@ -124,7 +124,8 @@
 										href="${pageContext.request.contextPath}/shoppingcart">Hóa
 											đơn</a></li>
 								</ul></li>
-							<li><a href="${pageContext.request.contextPath}/contact">Liên hệ</a></li>
+							<li><a href="${pageContext.request.contextPath}/contact">Liên
+									hệ</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -241,9 +242,8 @@
 							<div class="featured__item__pic set-bg"
 								data-setbg="${p.getImagePath()}">
 								<ul class="featured__item__pic__hover">
-									<li><a href="#"><i class="fa fa-heart"></i></a></li>
-									<li><a href="addtocart?pid=${p.getId()}"><i
-											class="fa fa-shopping-cart"></i></a></li>
+									<li><a><i class="fa fa-heart"></i></a></li>
+									<li><a><i class="fa fa-shopping-cart" onclick="addtocart('${pageContext.request.contextPath}','${p.getId()}');"></i></a></li>
 								</ul>
 							</div>
 							<div class="featured__item__text">
@@ -263,21 +263,28 @@
 		</div>
 	</section>
 	<!-- Featured Section End -->
-
+	<script>
+		function addtocart(path,id) {
+			var currentpath = window.location;
+			document.location.href = path + "/addtocart?pid=" + id + "&currentpath=" + currentpath;
+		}
+	</script>
 	<!-- Banner Begin -->
 	<div class="banner">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-6 col-md-6 col-sm-6">
 					<div class="banner__pic">
-						<a href="${pageContext.request.contextPath}/shop"><img src="<c:url value="templates/img/banner/banner-1.jpg"/>"
-							alt="" width="570" height="270" /></a>
+						<a href="${pageContext.request.contextPath}/shop"><img
+							src="<c:url value="templates/img/banner/banner-1.jpg"/>" alt=""
+							width="570" height="270" /></a>
 					</div>
 				</div>
 				<div class="col-lg-6 col-md-6 col-sm-6">
 					<div class="banner__pic">
-						<a href="${pageContext.request.contextPath}/shop"><img src="<c:url value = "templates/img/banner/banner-2.jpg"/>"
-							alt="" width="570" height="270" /></a>
+						<a href="${pageContext.request.contextPath}/shop"><img
+							src="<c:url value = "templates/img/banner/banner-2.jpg"/>" alt=""
+							width="570" height="270" /></a>
 					</div>
 				</div>
 			</div>
@@ -295,12 +302,7 @@
 	</section>
 	<jsp:include page="footer_user.jsp"></jsp:include>
 	<!-- Js Plugins -->
-	<script>
-		function addtocart(){
-			var currentLocation = window.location;
-			
-		}
-	</script>
+
 	<script src="<c:url value="templates/js/jquery-3.3.1.min.js"/>"></script>
 	<script src="<c:url value="templates/js/bootstrap.min.js"/>"></script>
 	<script src="<c:url value="templates/js/jquery.nice-select.min.js"/>"></script>

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>  
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
@@ -117,7 +117,8 @@
 										href="${pageContext.request.contextPath}/shoppingcart">Hóa
 											đơn</a></li>
 								</ul></li>
-							<li><a href="${pageContext.request.contextPath}/contact">Liên hệ</a></li>
+							<li><a href="${pageContext.request.contextPath}/contact">Liên
+									hệ</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -247,17 +248,20 @@
 									<div class="product__item__pic set-bg"
 										data-setbg="${p.getImagePath() }">
 										<ul class="product__item__pic__hover">
-											<li><a href="#"><i class="fa fa-heart"></i></a></li>
-											<li><a href="#"><i class="fa fa-retweet"></i></a></li>
-											<li><a href="addtocart?pid=${p.getId()}"><i
-													class="fa fa-shopping-cart"></i></a></li>
+											<li><a ><i class="fa fa-heart"></i></a></li>
+											<li><a ><i class="fa fa-retweet"></i></a></li>
+											<li><a ><i class="fa fa-shopping-cart" onclick="addtocart('${pageContext.request.contextPath}','${p.getId()}');"></i></a></li>
 										</ul>
 									</div>
 									<div class="product__item__text">
 										<h6>
 											<a href="chitietsanpham?pid=${p.getId()}">${p.getName() }</a>
 										</h6>
-										<h5><fmt:formatNumber type="number" pattern="###,###" value="${p.getPrice()}"/> VNĐ</h5>
+										<h5>
+											<fmt:formatNumber type="number" pattern="###,###"
+												value="${p.getPrice()}" />
+											VNĐ
+										</h5>
 									</div>
 								</div>
 							</div>
@@ -268,7 +272,13 @@
 		</div>
 	</section>
 	<!-- Product Section End -->
-
+	<script>
+		function addtocart(path, id) {
+			var currentpath = window.location;
+			document.location.href = path + "/addtocart?pid=" + id
+					+ "&currentpath=" + currentpath;
+		}
+	</script>
 	<!-- Footer Section Begin -->
 	<jsp:include page="footer_user.jsp"></jsp:include>
 	<!-- Footer Section End -->
