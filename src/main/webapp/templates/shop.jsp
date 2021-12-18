@@ -256,7 +256,8 @@
 										<ul class="product__item__pic__hover">
 											<li><a><i class="fa fa-heart"></i></a></li>
 											<li><a><i class="fa fa-retweet"></i></a></li>
-											<li><a><i class="fa fa-shopping-cart" onclick="addtocart('${pageContext.request.contextPath}','${p.getId()}')"></i></a></li>
+											<li><a><i class="fa fa-shopping-cart"
+													onclick="addtocart('${pageContext.request.contextPath}','${p.getId()}');"></i></a></li>
 										</ul>
 									</div>
 									<div class="product__item__text">
@@ -304,11 +305,11 @@
 
 				}
 			});
-			function addtocart(path, id) {
-				var currentpath = window.location;
-				document.location.href = path + "/addtocart?pid=" + id
-						+ "&currentpath=" + currentpath;
-			}
+		}
+		function addtocart(path, id) {
+			var currentpath = window.location;
+			document.location.href = path + "/addtocart?pid=" + id
+					+ "&currentpath=" + currentpath;
 		}
 	</script>
 	<!-- Js Plugins -->
