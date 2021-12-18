@@ -27,6 +27,25 @@
 		}
 		return true;
 	}
+	var hide = true;
+	function hideShowPassword() {
+		if (hide) {
+			document.getElementById('password-field').type = "text";
+			hide = false;
+		} else {
+			document.getElementById('password-field').type = "password";
+			hide = true;
+		}
+	}
+	function hideShowPassword1() {
+		if (hide) {
+			document.getElementById('password-field1').type = "text";
+			hide = false;
+		} else {
+			document.getElementById('password-field1').type = "password";
+			hide = true;
+		}
+	}
 </script>
 
 </head>
@@ -72,13 +91,16 @@
 									<input id="password-field" type="password" name="password"
 										class="form-control" required> <label
 										class="form-control-placeholder" for="password">Mật
-										khẩu</label> <span class="fa fa-fw fa-eye field-icon toggle-password"></span>
+										khẩu</label> <span class="fa fa-fw fa-eye field-icon toggle-password"
+										onclick="hideShowPassword();"></span>
 								</div>
 								<div class="form-group">
-									<input id="password-field" type="password" name ="passwordConfirm" class="form-control"
-										required> <label class="form-control-placeholder"
-										for="password">Nhập lại mật khẩu</label> <span
-										class="fa fa-fw fa-eye field-icon toggle-password"></span>
+									<input id="password-field1" type="password"
+										name="passwordConfirm" class="form-control" required>
+									<label class="form-control-placeholder" for="password">Nhập
+										lại mật khẩu</label> <span
+										class="fa fa-fw fa-eye field-icon toggle-password"
+										onclick="hideShowPassword1();"></span>
 								</div>
 								<div class="form-group">
 									<p class="text-center" style="color: red;">${errorMessage}</p>

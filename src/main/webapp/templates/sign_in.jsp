@@ -43,14 +43,15 @@
 							</div>
 							<form action="signin" method="POST" class="signin-form">
 								<div class="form-group mt-3">
-									<input type="email" class="form-control" name="email" required> <label
-										class="form-control-placeholder" for="username">Email</label>
+									<input type="email" class="form-control" name="email" required>
+									<label class="form-control-placeholder" for="username">Email</label>
 								</div>
 								<div class="form-group">
-									<input id="password-field" type="password" name="password" class="form-control"
-										required> <label class="form-control-placeholder"
-										for="password">Mật khẩu</label> <span
-										class="fa fa-fw fa-eye field-icon toggle-password"></span>
+									<input id="password" type="password" name="password"
+										class="form-control" required> <label
+										class="form-control-placeholder" for="password">Mật
+										khẩu</label> <i class="fa fa-fw fa-eye field-icon"
+										onclick="hideShowPassword()"></i>
 								</div>
 								<div class="form-group">
 									<p class="text-center" style="color: red;">${errorMessage}</p>
@@ -82,7 +83,18 @@
 			</div>
 		</div>
 	</section>
-
+	<script type="text/javascript">
+		var hide = true;
+		function hideShowPassword() {
+			if (hide) {
+				document.getElementById('password').type = "text";
+				hide = false;
+			} else {
+				document.getElementById('password').type = "password";
+				hide = true;
+			}
+		}
+	</script>
 	<script src="<c:url value ="templates/login_form/js/jquery.min.js"/>"></script>
 	<script src="<c:url value ="templates/login_form/js/popper.js"/>"></script>
 	<script
